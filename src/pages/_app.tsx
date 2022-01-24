@@ -5,11 +5,23 @@ import { ThemeProvider } from 'styled-components'
 
 import GlobalStyle from '../styles/global'
 import theme from '../styles/theme'
+import { Container } from '../styles/pages/app'
+import HeaderApp from '../components/HeaderApp'
+import Player from '../components/Player'
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider theme={theme}>
-      <Component {...pageProps} />
+      <Container>
+        <div className="podcast">
+          <HeaderApp />
+          <Component {...pageProps} />
+        </div>
+
+        <div className="player">
+          <Player />
+        </div>
+      </Container>
       <GlobalStyle />
     </ThemeProvider>
   )

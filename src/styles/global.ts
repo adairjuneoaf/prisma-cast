@@ -18,25 +18,26 @@ html{
 }
 
 body {
-    background: ${props => props.theme.colors.background};
-    color: ${props => props.theme.colors.text};
+    background: ${props => props.theme.colors.background_primary};
+    color: ${props => props.theme.colors.text_primary};
     -webkit-font-smoothing: antialiased;
 }
 
 body, input, textarea, button{
-    font-family: 'Roboto', sans-serif;
-    font-size: 1rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 1.5rem;
     font-weight: 400;
 }
 
 p{
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 0.875rem;
-    font-weight: 300;
+    font-weight: 400;
 }
 
 h1, h2, h3, h4, h5, h6, strong{
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Lexend', sans-serif;
+    font-size: 2rem;
     font-weight: 600;
 }
 
