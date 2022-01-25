@@ -10,6 +10,7 @@ import { formatedDurationTimeEpisode } from '../utils/formatedDurationTimeEpisod
 
 import { Container, Content } from '../styles/pages/index'
 import CardEpisodePodcast from '../components/CardEpisodePodcast'
+import TableEpisodesPodcast from '../components/TableEpisodesPodcast'
 
 interface episode {
   id: string
@@ -60,7 +61,7 @@ const Home: React.FC<HomeDataProps> = episodes => {
         </section>
         <section className="allEpisodes">
           <h2>Todos os episódios</h2>
-          <table className="episodes"></table>
+          <TableEpisodesPodcast />
         </section>
       </Content>
     </Container>

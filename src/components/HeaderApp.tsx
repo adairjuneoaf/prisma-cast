@@ -6,7 +6,7 @@ import ptBR from 'date-fns/locale/pt-BR'
 import { Container } from '../styles/components/HeaderApp'
 
 const HeaderApp: React.FC = () => {
-  const presentDate = format(new Date(), 'EEEEEE, d MMMM', {
+  const presentDate = format(new Date(), `EEEEEE, d MMMM`, {
     locale: ptBR
   })
 

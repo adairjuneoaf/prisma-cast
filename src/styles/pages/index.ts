@@ -12,6 +12,22 @@ export const Container = styled.div`
   align-items: center;
 
   overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    width: 0.5rem;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: ${props => props.theme.colors.white};
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: ${props => props.theme.colors.line};
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: ${props => props.theme.colors.text_primary};
+  }
 `
 export const Content = styled.div`
   width: 100%;
@@ -25,6 +41,7 @@ export const Content = styled.div`
   h2 {
     font-size: 1.875rem;
     padding: 1.5rem 0 2rem 0;
+    cursor: default;
   }
 
   .latestReleases {
