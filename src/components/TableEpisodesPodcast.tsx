@@ -1,82 +1,75 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import Link from 'next/link'
 import Image from 'next/image'
 
 import Button from '@mui/material/Button'
 import Tooltip from '@mui/material/Tooltip'
 
 import { Container } from '../styles/components/TableEpisodesPodcast'
+import { PlayerContext } from '../contexts/PlayerContext'
 
-const TableEpisodesPodcast: React.FC = () => {
+type EpisodeSelectedUser = {
+  id: string
+  url: string
+  title: string
+  members: string
+  duration: number
+  thumbnail: string
+}
+interface episode {
+  id: string
+  title: string
+  members: string
+  thumbnail: string
+  publishedAt: Date
+  durationFormated: number
+  episodeSelected: any
+}
+
+const TableEpisodesPodcast: React.FC<episode> = ({
+  id,
+  title,
+  members,
+  thumbnail,
+  publishedAt,
+  episodeSelected,
+  durationFormated
+}) => {
+  const { play } = useContext(PlayerContext)
+
   return (
-    <Container cellSpacing="0">
-      <thead>
-        <tr className="headTableEpisodes">
-          <td>PODCAST</td>
-          <td>INTEGRATES</td>
-          <td>DATA</td>
-          <td>DURAÇÃO</td>
-          <td>&nbsp;</td>
-        </tr>
-      </thead>
-      <tbody>
-        <tr className="contentTableEpisodes">
-          <td className="imgTitlePodcast">
-            <div>
-              <Image
-                src="https://storage.googleapis.com/golden-wind/nextlevelweek/05-podcastr/clean.jpg"
-                width="192"
-                height="192"
-                objectFit="cover"
-                className="imgPodcast"
-              />
-            </div>
-            <h4>Como programar like a god</h4>
-          </td>
-          <td className="participantsPodcast">Tiago, Diedo e Pellizzetti</td>
-          <td className="dataLaunchPodcast">8 Jan 21</td>
-          <td className="durationPodcast">1:35:18</td>
-          <td className="buttonPlayPodcast">
-            <Tooltip title="Play no episódio ${}" arrow>
-              <Button size="medium" className="button">
-                <img
-                  src="/svg/play-green.svg"
-                  alt="Botão para iniciar o episódio de Podcast"
-                  title="Play no episódio ${}"
-                />
-              </Button>
-            </Tooltip>
-          </td>
-        </tr>
-
-        <tr className="contentTableEpisodes">
-          <td className="imgTitlePodcast">
-            <div>
-              <Image
-                src="https://storage.googleapis.com/golden-wind/nextlevelweek/05-podcastr/clean.jpg"
-                width="192"
-                height="192"
-                objectFit="cover"
-                className="imgPodcast"
-              />
-            </div>
-            <h4>Como programar like a god</h4>
-          </td>
-          <td className="participantsPodcast">Tiago, Diedo e Pellizzetti</td>
-          <td className="dataLaunchPodcast">8 Jan 21</td>
-          <td className="durationPodcast">1:35:18</td>
-          <td className="buttonPlayPodcast">
-            <Tooltip title="Play no episódio ${}" arrow>
-              <Button className="button">
-                <img
-                  src="/svg/play-green.svg"
-                  alt="Botão para iniciar o episódio de Podcast"
-                  title="Play no episódio ${}"
-                />
-              </Button>
-            </Tooltip>
-          </td>
-        </tr>
-      </tbody>
+    <Container className="contentTableEpisodes">
+      <td className="imgTitlePodcast">
+        <div>
+          <Image
+            src={thumbnail}
+            width="192"
+            height="192"
+            objectFit="cover"
+            className="imgPodcast"
+          />
+        </div>
+        <Link href={`/episodes/${id}`}>
+          <a>{title}</a>
+        </Link>
+      </td>
+      <td className="participantsPodcast">{members}</td>
+      <td className="dataLaunchPodcast">{publishedAt}</td>
+      <td className="durationPodcast">{durationFormated}</td>
+      <td className="buttonPlayPodcast">
+        <Tooltip title={`Play no episódio ${title}`} arrow>
+          <Button
+            size="medium"
+            className="button"
+            onClick={() => play(episodeSelected)}
+          >
+            <img
+              src="/svg/play-green.svg"
+              alt="Botão para iniciar o episódio de Podcast"
+            />
+          </Button>
+        </Tooltip>
+      </td>
     </Container>
   )
 }

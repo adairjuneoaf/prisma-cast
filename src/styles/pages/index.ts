@@ -60,4 +60,23 @@ export const Content = styled.div`
       }
     }
   }
+
+  .allEpisodes {
+    table {
+      width: 100%;
+      height: auto;
+    }
+
+    .headTableEpisodes {
+      td {
+        font-size: 0.875rem;
+        font-weight: 500;
+        padding: 0 0 2rem 0;
+        border-bottom: 2px solid ${props => props.theme.colors.line};
+        color: ${props => props.theme.colors.text_primary};
+
+        cursor: default;
+      }
+    }
+  }
 `

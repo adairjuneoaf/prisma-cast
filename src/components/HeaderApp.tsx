@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from 'next/link'
 
 import format from 'date-fns/format'
 import ptBR from 'date-fns/locale/pt-BR'
@@ -13,7 +14,9 @@ const HeaderApp: React.FC = () => {
   return (
     <Container>
       <div className="infoAboutApp">
-        <img src="/svg/logo.svg" alt="Logo que representa o APP de Podcast" />
+        <Link href="/">
+          <img src="/svg/logo.svg" alt="Logo que representa o APP de Podcast" />
+        </Link>
         <span className="divider"></span>
         <p>O melhor para você ouvir, sempre!</p>
       </div>

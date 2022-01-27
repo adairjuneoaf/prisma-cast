@@ -1,70 +1,78 @@
 import styled from 'styled-components'
 
-export const Container = styled.table`
-  width: 100%;
-  height: auto;
+export const Container = styled.tr`
+  td {
+    padding: 1rem 0;
+    border-bottom: 2px solid ${props => props.theme.colors.line};
+    border-collapse: collapse;
+  }
 
-  .headTableEpisodes {
-    td {
+  .participantsPodcast,
+  .dataLaunchPodcast {
+    padding: 0 1.5rem 0 0;
+  }
+
+  color: ${props => props.theme.colors.text_secondary};
+  cursor: default;
+
+  .imgTitlePodcast {
+    > div {
+      width: 64px;
+      height: 64px;
+      .imgPodcast {
+        border-radius: 8px;
+      }
+    }
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 1rem;
+
+    a {
+      padding: 0 1.5rem 0 0;
+
+      font: 'Lexend', sans-serif;
       font-size: 0.875rem;
-      font-weight: 500;
-      padding: 0 0 2rem 0;
-      border-bottom: 2px solid ${props => props.theme.colors.line};
-      color: ${props => props.theme.colors.text_primary};
+      font-weight: 700;
+      line-height: 1.2;
 
-      cursor: default;
+      text-decoration: none;
+      color: ${props => props.theme.colors.title};
+
+      text-overflow: ellipsis;
+
+      transition: color 0.2s;
+
+      &:hover {
+        color: ${props => props.theme.colors.text_secondary};
+      }
     }
   }
 
-  .contentTableEpisodes {
-    td {
-      padding: 1rem 0;
-      border-bottom: 2px solid ${props => props.theme.colors.line};
-      border-collapse: collapse;
-    }
+  .dataLaunchPodcast {
+    text-transform: capitalize;
+  }
 
-    color: ${props => props.theme.colors.text_secondary};
-    cursor: default;
+  .buttonPlayPodcast {
+    text-align: right;
 
-    .imgTitlePodcast {
-      > div {
-        width: 64px;
-        height: 64px;
-        .imgPodcast {
-          border-radius: 8px;
-        }
-      }
-      display: flex;
-      align-items: center;
-      flex-direction: row;
-      justify-content: flex-start;
-      gap: 1rem;
+    .button {
+      min-width: 0;
+      font-size: 0;
+      padding: 0.5rem;
 
-      h4 {
-        font-size: 1rem;
-      }
-    }
+      border-radius: 25%;
+      background: ${props => props.theme.colors.white};
+      border: 1px solid ${props => props.theme.colors.line};
 
-    .buttonPlayPodcast {
-      text-align: right;
+      color: ${props => props.theme.colors.title};
 
-      .button {
-        min-width: 0;
-        font-size: 0;
-        padding: 0.5rem;
+      cursor: pointer;
 
-        border-radius: 25%;
-        background: ${props => props.theme.colors.white};
-        border: 1px solid ${props => props.theme.colors.line};
-
-        color: ${props => props.theme.colors.title};
-
-        cursor: pointer;
-
-        img {
-          width: 24px;
-          height: 24px;
-        }
+      img {
+        width: 24px;
+        height: 24px;
       }
     }
   }

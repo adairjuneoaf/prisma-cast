@@ -1,16 +1,33 @@
 import React from 'react'
+import Link from 'next/link'
 import Image from 'next/image'
 
-import { Container } from '../styles/components/CardEpisodePodcast'
 import Tooltip from '@mui/material/Tooltip'
 import Button from '@mui/material/Button'
 
-const CardEpisodePodcast: React.FC = () => {
+import { Container } from '../styles/components/CardEpisodePodcast'
+interface episode {
+  id: string
+  title: string
+  members: string
+  thumbnail: string
+  publishedAt: Date
+  durationFormated: number
+}
+
+const CardEpisodePodcast: React.FC<episode> = ({
+  id,
+  title,
+  members,
+  thumbnail,
+  publishedAt,
+  durationFormated
+}) => {
   return (
     <Container>
       <div className="imageEpisodePodcast">
         <Image
-          src="https://storage.googleapis.com/golden-wind/nextlevelweek/05-podcastr/opensource.jpg"
+          src={thumbnail}
           width={144}
           height={144}
           objectFit="cover"
@@ -19,22 +36,23 @@ const CardEpisodePodcast: React.FC = () => {
       </div>
       <div className="infoEpisodePodcast">
         <div className="headerEpisodePodcast">
-          <h4>O que é um bom código?</h4>
-          <p>Diego e Richard</p>
+          <Link href={`/episodes/${id}`}>
+            <a>{title}</a>
+          </Link>
+          <p>{members}</p>
         </div>
         <div className="footerEpisodePodcast">
           <span className="dataInfos">
-            <p>8 Jan 21</p>
+            <p>{publishedAt}</p>
             <span id="divider"></span>
-            <p>1:32:18</p>
+            <p>{durationFormated}</p>
           </span>
           <span className="buttonPlayEpisodePodcast">
-            <Tooltip title="Play no episódio ${}" arrow>
+            <Tooltip title={`Play no episódio ${title}`} arrow>
               <Button className="button">
                 <img
                   src="/svg/play-green.svg"
                   alt="Botão para iniciar o episódio de Podcast"
-                  title="Play no episódio ${}"
                 />
               </Button>
             </Tooltip>

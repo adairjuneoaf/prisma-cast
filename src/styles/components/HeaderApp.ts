@@ -25,6 +25,7 @@ export const Container = styled.header`
 
     img {
       width: 192px;
+      cursor: pointer;
     }
 
     .divider {

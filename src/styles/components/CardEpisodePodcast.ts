@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
   width: 100%;
-  height: auto;
+  height: 160px;
 
   display: flex;
   align-items: center;
@@ -40,12 +40,31 @@ export const Container = styled.div`
     padding: 0 0 0 1rem;
 
     .headerEpisodePodcast {
-      h4 {
+      display: flex;
+      flex-direction: column;
+
+      gap: 0.5rem;
+      a {
+        font: 'Lexend', sans-serif;
         font-size: 1rem;
-        line-height: 1.8;
+        font-weight: 700;
+        line-height: 1.2;
+
+        text-decoration: none;
+        color: ${props => props.theme.colors.title};
+
+        text-overflow: ellipsis;
+
+        transition: color 0.2s;
+
+        &:hover {
+          color: ${props => props.theme.colors.text_secondary};
+        }
       }
       p {
-        line-height: 1.8;
+        line-height: 1.2;
+
+        text-overflow: ellipsis;
       }
     }
 
@@ -56,6 +75,10 @@ export const Container = styled.div`
         flex-direction: row;
 
         gap: 0.5rem;
+
+        p {
+          text-transform: capitalize;
+        }
 
         #divider {
           width: 4px;

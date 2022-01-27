@@ -2,8 +2,8 @@ import React from 'react'
 import Head from 'next/head'
 import { GetStaticProps } from 'next'
 
-import { format, parseISO } from 'date-fns'
 import ptBR from 'date-fns/locale/pt-BR'
+import { format, parseISO } from 'date-fns'
 
 import { api } from '../services/api'
 import { formatedDurationTimeEpisode } from '../utils/formatedDurationTimeEpisode'
@@ -22,6 +22,7 @@ interface episode {
   url: string
   type: string
   duration: number
+  durationFormated: number
 }
 
 interface episodeJSON {
@@ -39,10 +40,14 @@ interface episodeJSON {
 }
 
 interface HomeDataProps {
-  episodes: Array<episode>
+  latestEpisodesPodcast: Array<episode>
+  allEpisodesPodcast: Array<episode>
 }
 
-const Home: React.FC<HomeDataProps> = episodes => {
+const Home: React.FC<HomeDataProps> = ({
+  latestEpisodesPodcast,
+  allEpisodesPodcast
+}) => {
   return (
     <Container>
       <Head>
@@ -55,13 +60,50 @@ const Home: React.FC<HomeDataProps> = episodes => {
         <section className="latestReleases">
           <h2>Últimos lançamentos</h2>
           <div className="cardEpisode">
-            <CardEpisodePodcast />
-            <CardEpisodePodcast />
+            {latestEpisodesPodcast.map(data => {
+              return (
+                <CardEpisodePodcast
+                  key={data.id}
+                  id={data.id}
+                  title={data.title}
+                  members={data.members}
+                  thumbnail={data.thumbnail}
+                  publishedAt={data.publishedAt}
+                  durationFormated={data.durationFormated}
+                />
+              )
+            })}
           </div>
         </section>
         <section className="allEpisodes">
           <h2>Todos os episódios</h2>
-          <TableEpisodesPodcast />
+          <table cellSpacing="0">
+            <thead>
+              <tr className="headTableEpisodes">
+                <td>PODCAST</td>
+                <td>INTEGRATES</td>
+                <td>DATA</td>
+                <td>DURAÇÃO</td>
+                <td>&nbsp;</td>
+              </tr>
+            </thead>
+            <tbody>
+              {allEpisodesPodcast.map(data => {
+                return (
+                  <TableEpisodesPodcast
+                    key={data.id}
+                    id={data.id}
+                    title={data.title}
+                    members={data.members}
+                    thumbnail={data.thumbnail}
+                    publishedAt={data.publishedAt}
+                    durationFormated={data.durationFormated}
+                    episodeSelected={data}
+                  />
+                )
+              })}
+            </tbody>
+          </table>
         </section>
       </Content>
     </Container>
@@ -79,7 +121,7 @@ export const getStaticProps: GetStaticProps = async () => {
     }
   })
 
-  const episodesFormated: episode = data.map(function (ep: episodeJSON) {
+  const episodesFormated: Array<episode> = data.map(function (ep: episodeJSON) {
     return {
       id: ep.id,
       title: ep.title,
@@ -96,9 +138,14 @@ export const getStaticProps: GetStaticProps = async () => {
     }
   })
 
+  const latestEpisodesPodcast = episodesFormated.slice(0, 2)
+  const allEpisodesPodcast = episodesFormated.slice(2, episodesFormated.length)
+
   return {
     props: {
-      episodes: episodesFormated
-    }
+      latestEpisodesPodcast,
+      allEpisodesPodcast
+    },
+    revalidate: 3600 * 1
   }
 }
