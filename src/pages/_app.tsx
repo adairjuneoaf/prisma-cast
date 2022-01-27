@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import type { AppProps } from 'next/app'
 
 import Player from '../components/Player'
@@ -9,24 +9,12 @@ import GlobalStyle from '../styles/global'
 import { Container } from '../styles/pages/app'
 import { ThemeProvider } from 'styled-components'
 
-import { PlayerContext } from '../contexts/PlayerContext'
+import PlayerContextProvider from '../contexts/PlayerContext'
 
-export default function MyApp({ Component, pageProps }: AppProps) {
-  const [episodeList, setEpisodeList] = useState([])
-
-  console.log(episodeList)
-
-  const [currentEpisodeIndex, setCurrentEpisodeIndex] = useState(0)
-
-  function play(episode) {
-    setEpisodeList([episode])
-    setCurrentEpisodeIndex(0)
-  }
+const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
   return (
     <ThemeProvider theme={theme}>
-      <PlayerContext.Provider
-        value={{ episodeList, currentEpisodeIndex, play }}
-      >
+      <PlayerContextProvider>
         <Container>
           <div className="podcast">
             <HeaderApp />
@@ -37,8 +25,10 @@ export default function MyApp({ Component, pageProps }: AppProps) {
             <Player />
           </div>
         </Container>
-      </PlayerContext.Provider>
+      </PlayerContextProvider>
       <GlobalStyle />
     </ThemeProvider>
   )
 }
+
+export default MyApp

@@ -38,11 +38,14 @@ export const Content = styled.section`
   }
 
   .contentPlayer {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    gap: 2rem;
     .imageBoxPodcast {
       width: 20rem;
       height: 20rem;
-
-      padding: 1rem;
 
       background: linear-gradient(
         143.8deg,
@@ -50,18 +53,51 @@ export const Content = styled.section`
         rgba(191, 92, 67, 0) 100%
       );
 
-      border: 1.5px dashed ${props => props.theme.colors.alternative_secondary};
       border-radius: 24px;
 
       display: flex;
       align-items: center;
       justify-content: center;
 
+      .imgPodcast {
+        border-radius: 24px;
+      }
+
       h4 {
         font-size: 1rem;
         align-items: center;
         color: ${props => props.theme.colors.white};
+        padding: 1rem;
       }
+    }
+
+    .infoPodcastActive {
+      h3 {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        min-height: 8rem;
+        font-weight: 600;
+        font-size: 1.25rem;
+        line-height: 30px;
+        text-align: center;
+        color: ${props => props.theme.colors.white};
+
+        padding: 1rem 0;
+      }
+
+      p {
+        min-height: 4rem;
+        line-height: 19px;
+        text-align: center;
+        font-size: 0.875rem;
+        color: ${props => props.theme.colors.text_primary};
+      }
+    }
+
+    .isNotActivePodcastImg {
+      border: 1.5px dashed ${props => props.theme.colors.alternative_secondary};
     }
   }
 
@@ -139,11 +175,24 @@ export const Content = styled.section`
 
         border-radius: 16px;
 
-        transition: background-color 0.2s;
+        transition: all 0.5s;
 
-        &:hover {
+        &:disabled {
+          cursor: not-allowed;
+        }
+
+        &:hover:not(:disabled) {
           background: ${props => props.theme.colors.alternative_quarter};
         }
+      }
+
+      .buttonPlayPause {
+        min-width: 64px;
+        min-height: 64px;
+      }
+
+      .isPlayerPause {
+        background: ${props => props.theme.colors.alternative_quarter};
       }
     }
   }

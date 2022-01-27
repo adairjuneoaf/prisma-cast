@@ -1,11 +1,22 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 
 import Tooltip from '@mui/material/Tooltip'
 import Button from '@mui/material/Button'
 
+import { PlayerContext } from '../contexts/PlayerContext'
+
 import { Container } from '../styles/components/CardEpisodePodcast'
+
+interface Episode {
+  id: string
+  url: string
+  title: string
+  members: string
+  duration: number
+  thumbnail: string
+}
 interface episode {
   id: string
   title: string
@@ -13,6 +24,7 @@ interface episode {
   thumbnail: string
   publishedAt: Date
   durationFormated: number
+  episodeSelectedByUser: Episode
 }
 
 const CardEpisodePodcast: React.FC<episode> = ({
@@ -21,8 +33,11 @@ const CardEpisodePodcast: React.FC<episode> = ({
   members,
   thumbnail,
   publishedAt,
-  durationFormated
+  durationFormated,
+  episodeSelectedByUser
 }) => {
+  const { play } = useContext(PlayerContext)
+
   return (
     <Container>
       <div className="imageEpisodePodcast">
@@ -53,6 +68,7 @@ const CardEpisodePodcast: React.FC<episode> = ({
                 <img
                   src="/svg/play-green.svg"
                   alt="Botão para iniciar o episódio de Podcast"
+                  onClick={() => play(episodeSelectedByUser)}
                 />
               </Button>
             </Tooltip>

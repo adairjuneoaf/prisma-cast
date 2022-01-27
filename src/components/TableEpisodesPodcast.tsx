@@ -8,7 +8,7 @@ import Tooltip from '@mui/material/Tooltip'
 import { Container } from '../styles/components/TableEpisodesPodcast'
 import { PlayerContext } from '../contexts/PlayerContext'
 
-type EpisodeSelectedUser = {
+interface Episode {
   id: string
   url: string
   title: string
@@ -23,7 +23,7 @@ interface episode {
   thumbnail: string
   publishedAt: Date
   durationFormated: number
-  episodeSelected: any
+  episodeSelectedByUser: Episode
 }
 
 const TableEpisodesPodcast: React.FC<episode> = ({
@@ -32,8 +32,8 @@ const TableEpisodesPodcast: React.FC<episode> = ({
   members,
   thumbnail,
   publishedAt,
-  episodeSelected,
-  durationFormated
+  durationFormated,
+  episodeSelectedByUser
 }) => {
   const { play } = useContext(PlayerContext)
 
@@ -61,7 +61,7 @@ const TableEpisodesPodcast: React.FC<episode> = ({
           <Button
             size="medium"
             className="button"
-            onClick={() => play(episodeSelected)}
+            onClick={() => play(episodeSelectedByUser)}
           >
             <img
               src="/svg/play-green.svg"

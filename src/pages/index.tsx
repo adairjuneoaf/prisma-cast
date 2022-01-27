@@ -40,13 +40,13 @@ interface episodeJSON {
 }
 
 interface HomeDataProps {
-  latestEpisodesPodcast: Array<episode>
   allEpisodesPodcast: Array<episode>
+  latestEpisodesPodcast: Array<episode>
 }
 
 const Home: React.FC<HomeDataProps> = ({
-  latestEpisodesPodcast,
-  allEpisodesPodcast
+  allEpisodesPodcast,
+  latestEpisodesPodcast
 }) => {
   return (
     <Container>
@@ -63,11 +63,12 @@ const Home: React.FC<HomeDataProps> = ({
             {latestEpisodesPodcast.map(data => {
               return (
                 <CardEpisodePodcast
-                  key={data.id}
                   id={data.id}
+                  key={data.id}
                   title={data.title}
                   members={data.members}
                   thumbnail={data.thumbnail}
+                  episodeSelectedByUser={data}
                   publishedAt={data.publishedAt}
                   durationFormated={data.durationFormated}
                 />
@@ -91,14 +92,14 @@ const Home: React.FC<HomeDataProps> = ({
               {allEpisodesPodcast.map(data => {
                 return (
                   <TableEpisodesPodcast
-                    key={data.id}
                     id={data.id}
+                    key={data.id}
                     title={data.title}
                     members={data.members}
                     thumbnail={data.thumbnail}
+                    episodeSelectedByUser={data}
                     publishedAt={data.publishedAt}
                     durationFormated={data.durationFormated}
-                    episodeSelected={data}
                   />
                 )
               })}
