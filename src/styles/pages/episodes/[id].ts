@@ -102,7 +102,7 @@ export const Content = styled.div`
       gap: 1rem;
 
       p {
-        color: ${props => props.theme.colors.text_primary};
+        color: ${props => props.theme.colors.text_secondary};
       }
 
       p.launchDateEpisodePodcast {

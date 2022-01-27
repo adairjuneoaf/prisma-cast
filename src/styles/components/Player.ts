@@ -49,8 +49,8 @@ export const Content = styled.section`
 
       background: linear-gradient(
         143.8deg,
-        rgba(191, 92, 67, 0.8) 0%,
-        rgba(191, 92, 67, 0) 100%
+        rgba(87, 36, 89, 0.8) 0%,
+        rgba(111, 46, 114, 0) 100%
       );
 
       border-radius: 24px;
@@ -88,6 +88,7 @@ export const Content = styled.section`
       }
 
       p {
+        padding: 0rem 2rem;
         min-height: 4rem;
         line-height: 19px;
         text-align: center;
@@ -114,8 +115,11 @@ export const Content = styled.section`
       flex-direction: row;
       gap: 1rem;
 
+      width: 100%;
+
       .initialTimePodcast {
         flex: 1;
+        text-align: center;
 
         font-size: 0.875rem;
 
@@ -148,6 +152,7 @@ export const Content = styled.section`
 
       .finalTimePodcast {
         flex: 1;
+        text-align: center;
 
         font-size: 0.875rem;
 
@@ -166,7 +171,7 @@ export const Content = styled.section`
 
       gap: 0.5rem;
 
-      button {
+      .button {
         font-size: 0;
         border: 0;
         background: transparent;
@@ -174,6 +179,8 @@ export const Content = styled.section`
         padding: 1rem;
 
         border-radius: 16px;
+
+        color: ${props => props.theme.colors.white};
 
         transition: all 0.5s;
 

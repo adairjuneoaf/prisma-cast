@@ -4,6 +4,8 @@ import Image from 'next/image'
 import { PlayerContext } from '../contexts/PlayerContext'
 
 import { Container, Content } from '../styles/components/Player'
+import Tooltip from '@mui/material/Tooltip'
+import Button from '@mui/material/Button'
 
 const Player: React.FC = () => {
   const {
@@ -98,50 +100,66 @@ const Player: React.FC = () => {
           )}
 
           <div className="buttonsPlayer">
-            <button type="button" disabled={!episode}>
-              <img
-                src="/svg/shuffle.svg"
-                alt="Icones de controle do player do Podcast"
-              />
-            </button>
-            <button type="button" disabled={!episode}>
-              <img
-                src="/svg/play-previous.svg"
-                alt="Icones de controle do player do Podcast"
-              />
-            </button>
-            <button
-              type="button"
-              className={
-                !isPlaying ? 'buttonPlayPause' : 'buttonPlayPause isPlayerPause'
-              }
-              disabled={!episode}
-              onClick={togglePlay}
-            >
-              {isPlaying ? (
+            <Tooltip title="Habilitar modo aleatório" arrow>
+              <Button type="button" disabled={!episode} className="button">
                 <img
-                  src="/svg/pause.svg"
+                  src="/svg/shuffle.svg"
                   alt="Icones de controle do player do Podcast"
                 />
-              ) : (
+              </Button>
+            </Tooltip>
+
+            <Tooltip title="Anterior" arrow>
+              <Button type="button" disabled={!episode} className="button">
                 <img
-                  src="/svg/play.svg"
+                  src="/svg/play-previous.svg"
                   alt="Icones de controle do player do Podcast"
                 />
-              )}
-            </button>
-            <button type="button" disabled={!episode}>
-              <img
-                src="/svg/play-next.svg"
-                alt="Icones de controle do player do Podcast"
-              />
-            </button>
-            <button type="button" disabled={!episode}>
-              <img
-                src="/svg/repeat.svg"
-                alt="Icones de controle do player do Podcast"
-              />
-            </button>
+              </Button>
+            </Tooltip>
+
+            <Tooltip title="Play/Pause" arrow>
+              <Button
+                type="button"
+                className={
+                  !isPlaying
+                    ? 'buttonPlayPause button'
+                    : 'buttonPlayPause button isPlayerPause'
+                }
+                disabled={!episode}
+                onClick={togglePlay}
+              >
+                {isPlaying ? (
+                  <img
+                    src="/svg/pause.svg"
+                    alt="Icones de controle do player do Podcast"
+                  />
+                ) : (
+                  <img
+                    src="/svg/play.svg"
+                    alt="Icones de controle do player do Podcast"
+                  />
+                )}
+              </Button>
+            </Tooltip>
+
+            <Tooltip title="Próximo" arrow>
+              <Button type="button" disabled={!episode} className="button">
+                <img
+                  src="/svg/play-next.svg"
+                  alt="Icones de controle do player do Podcast"
+                />
+              </Button>
+            </Tooltip>
+
+            <Tooltip title="Habilitar repetir o atual" arrow>
+              <Button type="button" disabled={!episode} className="button">
+                <img
+                  src="/svg/repeat.svg"
+                  alt="Icones de controle do player do Podcast"
+                />
+              </Button>
+            </Tooltip>
           </div>
         </div>
       </Content>
