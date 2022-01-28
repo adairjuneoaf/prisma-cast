@@ -94,8 +94,16 @@ export const Container = styled.div`
       justify-content: space-between;
 
       .buttonPlayEpisodePodcast {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        justify-content: center;
+
+        gap: 0.5rem;
+
         .button {
           min-width: 0;
+
           font-size: 0;
           padding: 0.5rem;
 

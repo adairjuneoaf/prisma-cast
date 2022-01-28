@@ -50,4 +50,17 @@ button {
     opacity: 0.6;
     cursor: not-allowed;
 }
+
+.toastsAlerts{
+  width: fit-content;
+  height: auto;
+
+  cursor: default;
+
+  font-size: 0.875rem;
+  font-weight: 600;
+  font-family: 'Lexend', sans-serif;
+
+  color: ${props => props.theme.colors.title};
+}
 `

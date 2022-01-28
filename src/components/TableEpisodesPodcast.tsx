@@ -35,7 +35,7 @@ const TableEpisodesPodcast: React.FC<episode> = ({
   durationFormated,
   episodeSelectedByUser
 }) => {
-  const { play } = useContext(PlayerContext)
+  const { play, playList } = useContext(PlayerContext)
 
   return (
     <Container className="contentTableEpisodes">
@@ -57,6 +57,15 @@ const TableEpisodesPodcast: React.FC<episode> = ({
       <td className="dataLaunchPodcast">{publishedAt}</td>
       <td className="durationPodcast">{durationFormated}</td>
       <td className="buttonPlayPodcast">
+        <Tooltip title={`Adicionar a playlist episódio ${title}`} arrow>
+          <Button className="button">
+            <img
+              src="/svg/add-play.svg"
+              alt="Botão para adicionar episódio a playlist"
+              onClick={() => playList(episodeSelectedByUser)}
+            />
+          </Button>
+        </Tooltip>
         <Tooltip title={`Play no episódio ${title}`} arrow>
           <Button
             size="medium"

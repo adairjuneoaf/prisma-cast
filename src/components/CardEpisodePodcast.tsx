@@ -36,7 +36,7 @@ const CardEpisodePodcast: React.FC<episode> = ({
   durationFormated,
   episodeSelectedByUser
 }) => {
-  const { play } = useContext(PlayerContext)
+  const { play, playList } = useContext(PlayerContext)
 
   return (
     <Container>
@@ -63,6 +63,15 @@ const CardEpisodePodcast: React.FC<episode> = ({
             <p>{durationFormated}</p>
           </span>
           <span className="buttonPlayEpisodePodcast">
+            <Tooltip title={`Adicionar a playlist episódio ${title}`} arrow>
+              <Button className="button">
+                <img
+                  src="/svg/add-play.svg"
+                  alt="Botão para adicionar episódio a playlist"
+                  onClick={() => playList(episodeSelectedByUser)}
+                />
+              </Button>
+            </Tooltip>
             <Tooltip title={`Play no episódio ${title}`} arrow>
               <Button className="button">
                 <img

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 
 import Head from 'next/head'
 import Image from 'next/image'
@@ -15,6 +15,7 @@ import { api } from '../../services/api'
 import { Container, Content } from '../../styles/pages/episodes/[id]'
 
 import { formatedDurationTimeEpisode } from '../../utils/formatedDurationTimeEpisode'
+import { PlayerContext } from '../../contexts/PlayerContext'
 
 type ContextParamsGetStaticProps = {
   params: {
@@ -24,25 +25,26 @@ type ContextParamsGetStaticProps = {
 
 interface episodeUnformatted {
   id: string
+  url: string
+  type: string
   title: string
   members: string
+  duration: number
   thumbnail: string
   description: string
   publishedAt: string
-  url: string
-  type: string
   durationFormated: string
 }
-
 interface Episode {
   id: string
-  title: string
-  members: string
-  thumbnail: string
-  description: string
-  publishedAt: Date
   url: string
   type: string
+  title: string
+  members: string
+  duration: number
+  thumbnail: string
+  publishedAt: Date
+  description: string
   durationFormated: number
 }
 
@@ -51,6 +53,8 @@ interface EpisodePodcastProps {
 }
 
 const EpisodePodcast: React.FC<EpisodePodcastProps> = ({ episode }) => {
+  const { play } = useContext(PlayerContext)
+
   return (
     <Container>
       <Head>
@@ -81,6 +85,7 @@ const EpisodePodcast: React.FC<EpisodePodcastProps> = ({ episode }) => {
               <img
                 src="/svg/play.svg"
                 alt="Botão para iniciar o episódio de Podcast"
+                onClick={() => play(episode)}
               />
             </Button>
           </Tooltip>
@@ -141,14 +146,15 @@ export const getStaticProps = async ({
   const episode: episodeUnformatted = {
     id: data.id,
     title: data.title,
+    url: data.file.url,
+    type: data.file.type,
     members: data.members,
     thumbnail: data.thumbnail,
+    duration: data.file.duration,
     description: data.description,
     publishedAt: format(parseISO(data.published_at), 'd MMM yy', {
       locale: ptBR
     }),
-    url: data.file.url,
-    type: data.file.type,
     durationFormated: formatedDurationTimeEpisode(data.file.duration)
   }
 

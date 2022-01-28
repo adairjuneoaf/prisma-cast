@@ -129,8 +129,13 @@ export const Content = styled.section`
         color: ${props => props.theme.colors.white};
       }
 
+      .sliderProgressBar {
+        width: 100%;
+        flex: 5;
+      }
+
       .statusProgressBarPodcast {
-        width: 176px;
+        width: 100%;
         height: 4px;
         background: black;
 
@@ -139,15 +144,6 @@ export const Content = styled.section`
         background: ${props => props.theme.colors.alternative_quarter};
 
         flex: 5;
-
-        .currentStatusProgressBarPodcast {
-          width: 50%;
-          height: 4px;
-
-          background: #04d361;
-
-          border-radius: 24px;
-        }
       }
 
       .finalTimePodcast {
@@ -186,6 +182,7 @@ export const Content = styled.section`
 
         &:disabled {
           cursor: not-allowed;
+          opacity: 0.5;
         }
 
         &:hover:not(:disabled) {
@@ -198,7 +195,8 @@ export const Content = styled.section`
         min-height: 64px;
       }
 
-      .isPlayerPause {
+      .isPlayerPause,
+      .isLooping {
         background: ${props => props.theme.colors.alternative_quarter};
       }
     }

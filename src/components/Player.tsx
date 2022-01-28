@@ -7,11 +7,20 @@ import { Container, Content } from '../styles/components/Player'
 import Tooltip from '@mui/material/Tooltip'
 import Button from '@mui/material/Button'
 
+import Slider from 'rc-slider'
+import 'rc-slider/assets/index.css'
+
 const Player: React.FC = () => {
   const {
+    hasNext,
+    playNext,
+    isLooping,
     isPlaying,
+    toggleLoop,
     togglePlay,
+    hasPrevious,
     episodeList,
+    playPrevious,
     setPlayingState,
     currentEpisodeIndex
   } = useContext(PlayerContext)
@@ -83,9 +92,16 @@ const Player: React.FC = () => {
         >
           <div className="progressPodcast">
             <span className="initialTimePodcast">00:00</span>
-            <div className="statusProgressBarPodcast">
-              <div className="currentStatusProgressBarPodcast"></div>
-            </div>
+            {episode ? (
+              <Slider
+                className="sliderProgressBar"
+                trackStyle={{ backgroundColor: '#E8C468' }}
+                railStyle={{ backgroundColor: '#572459' }}
+                handleStyle={{ borderColor: '#E8C468', borderWidth: 4 }}
+              />
+            ) : (
+              <div className="statusProgressBarPodcast"></div>
+            )}
             <span className="finalTimePodcast">00:00</span>
           </div>
 
@@ -94,6 +110,7 @@ const Player: React.FC = () => {
               autoPlay
               ref={audioRef}
               src={episode.url}
+              loop={isLooping}
               onPlay={() => setPlayingState(true)}
               onPause={() => setPlayingState(false)}
             />
@@ -110,7 +127,12 @@ const Player: React.FC = () => {
             </Tooltip>
 
             <Tooltip title="Anterior" arrow>
-              <Button type="button" disabled={!episode} className="button">
+              <Button
+                type="button"
+                disabled={!episode || !hasPrevious}
+                className="button"
+                onClick={playPrevious}
+              >
                 <img
                   src="/svg/play-previous.svg"
                   alt="Icones de controle do player do Podcast"
@@ -118,7 +140,7 @@ const Player: React.FC = () => {
               </Button>
             </Tooltip>
 
-            <Tooltip title="Play/Pause" arrow>
+            <Tooltip title={isPlaying ? 'Pause' : 'Play'} arrow>
               <Button
                 type="button"
                 className={
@@ -144,7 +166,12 @@ const Player: React.FC = () => {
             </Tooltip>
 
             <Tooltip title="Próximo" arrow>
-              <Button type="button" disabled={!episode} className="button">
+              <Button
+                type="button"
+                disabled={!episode || !hasNext}
+                className="button"
+                onClick={playNext}
+              >
                 <img
                   src="/svg/play-next.svg"
                   alt="Icones de controle do player do Podcast"
@@ -152,11 +179,24 @@ const Player: React.FC = () => {
               </Button>
             </Tooltip>
 
-            <Tooltip title="Habilitar repetir o atual" arrow>
-              <Button type="button" disabled={!episode} className="button">
+            <Tooltip
+              title={
+                isLooping
+                  ? 'Desabilitar repetir o próximo episódio'
+                  : 'Habilitar repetir o próximo episódio'
+              }
+              arrow
+              placement="left"
+            >
+              <Button
+                type="button"
+                disabled={!episode}
+                className={isLooping ? 'button isLooping' : 'button'}
+              >
                 <img
                   src="/svg/repeat.svg"
                   alt="Icones de controle do player do Podcast"
+                  onClick={toggleLoop}
                 />
               </Button>
             </Tooltip>

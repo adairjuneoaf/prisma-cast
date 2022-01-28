@@ -62,6 +62,8 @@ export const Container = styled.tr`
       font-size: 0;
       padding: 0.5rem;
 
+      margin-left: 0.5rem;
+
       border-radius: 25%;
       background: ${props => props.theme.colors.white};
       border: 1px solid ${props => props.theme.colors.line};
