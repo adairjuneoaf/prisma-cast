@@ -196,6 +196,7 @@ export const Content = styled.section`
       }
 
       .isPlayerPause,
+      .isShuffling,
       .isLooping {
         background: ${props => props.theme.colors.alternative_quarter};
       }

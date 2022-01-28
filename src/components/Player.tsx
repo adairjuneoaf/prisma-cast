@@ -20,7 +20,9 @@ const Player: React.FC = () => {
     togglePlay,
     hasPrevious,
     episodeList,
+    isShuffling,
     playPrevious,
+    toggleShuffle,
     setPlayingState,
     currentEpisodeIndex
   } = useContext(PlayerContext)
@@ -117,66 +119,86 @@ const Player: React.FC = () => {
           )}
 
           <div className="buttonsPlayer">
-            <Tooltip title="Habilitar modo aleatório" arrow>
-              <Button type="button" disabled={!episode} className="button">
-                <img
-                  src="/svg/shuffle.svg"
-                  alt="Icones de controle do player do Podcast"
-                />
-              </Button>
+            <Tooltip
+              title={
+                isShuffling
+                  ? 'Desabilitar playlist embaralhada'
+                  : 'Embaralhar playlist'
+              }
+              arrow
+            >
+              <span>
+                <Button
+                  type="button"
+                  disabled={!episode}
+                  className={isShuffling ? 'button isShuffling' : 'button'}
+                >
+                  <img
+                    src="/svg/shuffle.svg"
+                    alt="Icones de controle do player do Podcast"
+                    onClick={toggleShuffle}
+                  />
+                </Button>
+              </span>
             </Tooltip>
 
             <Tooltip title="Anterior" arrow>
-              <Button
-                type="button"
-                disabled={!episode || !hasPrevious}
-                className="button"
-                onClick={playPrevious}
-              >
-                <img
-                  src="/svg/play-previous.svg"
-                  alt="Icones de controle do player do Podcast"
-                />
-              </Button>
+              <span>
+                <Button
+                  type="button"
+                  disabled={!episode || !hasPrevious}
+                  className="button"
+                  onClick={playPrevious}
+                >
+                  <img
+                    src="/svg/play-previous.svg"
+                    alt="Icones de controle do player do Podcast"
+                  />
+                </Button>
+              </span>
             </Tooltip>
 
             <Tooltip title={isPlaying ? 'Pause' : 'Play'} arrow>
-              <Button
-                type="button"
-                className={
-                  !isPlaying
-                    ? 'buttonPlayPause button'
-                    : 'buttonPlayPause button isPlayerPause'
-                }
-                disabled={!episode}
-                onClick={togglePlay}
-              >
-                {isPlaying ? (
-                  <img
-                    src="/svg/pause.svg"
-                    alt="Icones de controle do player do Podcast"
-                  />
-                ) : (
-                  <img
-                    src="/svg/play.svg"
-                    alt="Icones de controle do player do Podcast"
-                  />
-                )}
-              </Button>
+              <span>
+                <Button
+                  type="button"
+                  className={
+                    !isPlaying
+                      ? 'buttonPlayPause button'
+                      : 'buttonPlayPause button isPlayerPause'
+                  }
+                  disabled={!episode}
+                  onClick={togglePlay}
+                >
+                  {isPlaying ? (
+                    <img
+                      src="/svg/pause.svg"
+                      alt="Icones de controle do player do Podcast"
+                    />
+                  ) : (
+                    <img
+                      src="/svg/play.svg"
+                      alt="Icones de controle do player do Podcast"
+                    />
+                  )}
+                </Button>
+              </span>
             </Tooltip>
 
             <Tooltip title="Próximo" arrow>
-              <Button
-                type="button"
-                disabled={!episode || !hasNext}
-                className="button"
-                onClick={playNext}
-              >
-                <img
-                  src="/svg/play-next.svg"
-                  alt="Icones de controle do player do Podcast"
-                />
-              </Button>
+              <span>
+                <Button
+                  type="button"
+                  disabled={!episode || !hasNext}
+                  className="button"
+                  onClick={playNext}
+                >
+                  <img
+                    src="/svg/play-next.svg"
+                    alt="Icones de controle do player do Podcast"
+                  />
+                </Button>
+              </span>
             </Tooltip>
 
             <Tooltip
@@ -188,17 +210,19 @@ const Player: React.FC = () => {
               arrow
               placement="left"
             >
-              <Button
-                type="button"
-                disabled={!episode}
-                className={isLooping ? 'button isLooping' : 'button'}
-              >
-                <img
-                  src="/svg/repeat.svg"
-                  alt="Icones de controle do player do Podcast"
-                  onClick={toggleLoop}
-                />
-              </Button>
+              <span>
+                <Button
+                  type="button"
+                  disabled={!episode}
+                  className={isLooping ? 'button isLooping' : 'button'}
+                >
+                  <img
+                    src="/svg/repeat.svg"
+                    alt="Icones de controle do player do Podcast"
+                    onClick={toggleLoop}
+                  />
+                </Button>
+              </span>
             </Tooltip>
           </div>
         </div>

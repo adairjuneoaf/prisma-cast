@@ -17,12 +17,14 @@ interface PlayerContextProps {
   hasNext: boolean
   isLooping: boolean
   isPlaying: boolean
+  isShuffling: boolean
   hasPrevious: boolean
   playNext: () => void
   episodeList: Episode[]
   toggleLoop: () => void
   togglePlay: () => void
   playPrevious: () => void
+  toggleShuffle: () => void
   currentEpisodeIndex: number
   play: (episode: Episode) => void
   playList: (episode: Episode) => void
@@ -37,7 +39,12 @@ const PlayerContextProvider: React.FC<PlayerContextProvider> = ({
   const [episodeList, setEpisodeList] = useState<any>([])
   const [isPlaying, setIsPlaying] = useState<boolean>(false)
   const [isLooping, setIsLooping] = useState<boolean>(false)
+  const [isShuffling, setIsShuffling] = useState<boolean>(false)
   const [currentEpisodeIndex, setCurrentEpisodeIndex] = useState(0)
+  const [listEpisodesShuffled, setListEpisodesShuffled] = useState<any>([])
+
+  console.log('lista de episodios atual', episodeList)
+  console.log('lista de episodios embaralhada', listEpisodesShuffled)
 
   const hasNext: boolean = currentEpisodeIndex + 1 < episodeList.length
   const hasPrevious: boolean = currentEpisodeIndex > 0
@@ -60,7 +67,13 @@ const PlayerContextProvider: React.FC<PlayerContextProvider> = ({
   }
 
   function playNext() {
-    if (hasNext) {
+    if (hasNext && isShuffling) {
+      setEpisodeList(listEpisodesShuffled)
+
+      setCurrentEpisodeIndex(0)
+    }
+
+    if (hasNext && !isShuffling) {
       setCurrentEpisodeIndex(currentEpisodeIndex + 1)
     }
   }
@@ -83,6 +96,22 @@ const PlayerContextProvider: React.FC<PlayerContextProvider> = ({
     setIsLooping(!isLooping)
   }
 
+  function toggleShuffle() {
+    if (episodeList.length > 2 && !isShuffling) {
+      setIsShuffling(!isShuffling)
+
+      let actualEpisodeList = episodeList.slice(1, episodeList.length) // BUG A SER RESOLVIDO, CASO O PLAYER ESTEJA TOCANDO UM EPISODIO ACIMA DO INDEX 0 DA LISTA,
+      let x = actualEpisodeList.sort(() => Math.random() - 0.5) // POR EXEMPLO O EPISODIO DE INDEX 2, ESSE EPISODIO SERÁ REPETIDO DENTRO DA NOVA LISTA ALEATÓRIA.
+      setListEpisodesShuffled(x) // PARA CONCERTAR ISSO, DEVEMOS FAZER UMA BUSCA NO ARRAY E RETIRAR O EPISODIO EM REPRODUÇÃO DA LISTA.
+
+      toast.success('Playlist embaralhada')
+    }
+
+    if (isShuffling) {
+      setIsShuffling(!isShuffling)
+    }
+  }
+
   return (
     <PlayerContext.Provider
       value={{
@@ -96,7 +125,9 @@ const PlayerContextProvider: React.FC<PlayerContextProvider> = ({
         togglePlay,
         episodeList,
         hasPrevious,
+        isShuffling,
         playPrevious,
+        toggleShuffle,
         setPlayingState,
         currentEpisodeIndex
       }}
