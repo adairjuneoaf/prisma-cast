@@ -108,7 +108,7 @@ const Player: React.FC = () => {
           </div>
 
           {episode && (
-            <audio
+            <audio // CONTROLE DE VOLUME DA TAG AUDIO É POSSÍVEL UTILIZANDO A PROPRIEDADE "current" E O ATRIBUTO "volume" > audioRef.current.volume
               autoPlay
               ref={audioRef}
               src={episode.url}

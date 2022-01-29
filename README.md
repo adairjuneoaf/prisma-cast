@@ -28,6 +28,9 @@ Para auxiliar no desenvolvimento do projeto, utilizei as seguinte bibliotecas:
 
 - [SWR](https://swr.vercel.app)
 - [Framer](https://www.framer.com/docs/)
+- [date-fns](https://date-fns.org/docs/Getting-Started)
+- [rc-slider](https://slider-react-component.vercel.app)
+- [Material-UI](https://mui.com/pt/getting-started/installation/)
 - [json-server](https://github.com/typicode/json-server)
 - [ReactToastify](https://fkhadra.github.io/react-toastify/introduction)
 - [StyledComponents](https://styled-components.com)
