@@ -57,7 +57,7 @@ const TableEpisodesPodcast: React.FC<episode> = ({
       <td className="dataLaunchPodcast">{publishedAt}</td>
       <td className="durationPodcast">{durationFormated}</td>
       <td className="buttonPlayPodcast">
-        <Tooltip title={`Adicionar a playlist episódio ${title}`} arrow>
+        <Tooltip title="Adicionar o episódio a playlist" arrow>
           <Button className="button">
             <img
               src="/svg/add-play.svg"
@@ -66,7 +66,7 @@ const TableEpisodesPodcast: React.FC<episode> = ({
             />
           </Button>
         </Tooltip>
-        <Tooltip title={`Play no episódio ${title}`} arrow>
+        <Tooltip title="Play no episódio" arrow>
           <Button
             size="medium"
             className="button"

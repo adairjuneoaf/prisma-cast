@@ -1,4 +1,5 @@
 import { createContext, ReactNode, useState } from 'react'
+
 import toast from 'react-hot-toast'
 interface PlayerContextProvider {
   children: ReactNode
@@ -23,6 +24,7 @@ interface PlayerContextProps {
   episodeList: Episode[]
   toggleLoop: () => void
   togglePlay: () => void
+  clearPlayer: () => void
   playPrevious: () => void
   toggleShuffle: () => void
   currentEpisodeIndex: number
@@ -45,6 +47,9 @@ const PlayerContextProvider: React.FC<PlayerContextProvider> = ({
 
   console.log('lista de episodios atual', episodeList)
   console.log('lista de episodios embaralhada', listEpisodesShuffled)
+
+  console.log('episodio atual', currentEpisodeIndex)
+  console.log('quantidade de episodios', episodeList.length)
 
   const hasNext: boolean = currentEpisodeIndex + 1 < episodeList.length
   const hasPrevious: boolean = currentEpisodeIndex > 0
@@ -71,6 +76,7 @@ const PlayerContextProvider: React.FC<PlayerContextProvider> = ({
       setEpisodeList(listEpisodesShuffled)
 
       setCurrentEpisodeIndex(0)
+      setIsShuffling(!isShuffling)
     }
 
     if (hasNext && !isShuffling) {
@@ -100,9 +106,12 @@ const PlayerContextProvider: React.FC<PlayerContextProvider> = ({
     if (episodeList.length > 2 && !isShuffling) {
       setIsShuffling(!isShuffling)
 
-      let actualEpisodeList = episodeList.slice(1, episodeList.length) // BUG A SER RESOLVIDO, CASO O PLAYER ESTEJA TOCANDO UM EPISODIO ACIMA DO INDEX 0 DA LISTA,
-      let x = actualEpisodeList.sort(() => Math.random() - 0.5) // POR EXEMPLO O EPISODIO DE INDEX 2, ESSE EPISODIO SERÁ REPETIDO DENTRO DA NOVA LISTA ALEATÓRIA.
-      setListEpisodesShuffled(x) // PARA CONCERTAR ISSO, DEVEMOS FAZER UMA BUSCA NO ARRAY E RETIRAR O EPISODIO EM REPRODUÇÃO DA LISTA.
+      let actualEpisodeList = episodeList.slice(
+        currentEpisodeIndex + 1,
+        episodeList.length
+      )
+      let x = actualEpisodeList.sort(() => Math.random() - 0.5)
+      setListEpisodesShuffled(x)
 
       toast.success('Playlist embaralhada')
     }
@@ -110,6 +119,11 @@ const PlayerContextProvider: React.FC<PlayerContextProvider> = ({
     if (isShuffling) {
       setIsShuffling(!isShuffling)
     }
+  }
+
+  function clearPlayer() {
+    setEpisodeList([])
+    setCurrentEpisodeIndex(0)
   }
 
   return (
@@ -126,6 +140,7 @@ const PlayerContextProvider: React.FC<PlayerContextProvider> = ({
         episodeList,
         hasPrevious,
         isShuffling,
+        clearPlayer,
         playPrevious,
         toggleShuffle,
         setPlayingState,

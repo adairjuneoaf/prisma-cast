@@ -109,6 +109,8 @@ export const Content = styled.section`
 
     gap: 2rem;
 
+    width: 100%;
+
     .progressPodcast {
       display: flex;
       align-items: center;
@@ -123,8 +125,7 @@ export const Content = styled.section`
 
         font-size: 0.875rem;
 
-        width: 48px;
-        width: 24px;
+        min-width: 64px;
 
         color: ${props => props.theme.colors.white};
       }
@@ -152,8 +153,7 @@ export const Content = styled.section`
 
         font-size: 0.875rem;
 
-        width: 48px;
-        width: 24px;
+        min-width: 64px;
 
         color: ${props => props.theme.colors.white};
       }

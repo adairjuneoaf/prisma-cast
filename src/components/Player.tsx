@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 
 import { PlayerContext } from '../contexts/PlayerContext'
@@ -9,6 +9,7 @@ import Button from '@mui/material/Button'
 
 import Slider from 'rc-slider'
 import 'rc-slider/assets/index.css'
+import { formatedDurationTimeEpisode } from '../utils/formatedDurationTimeEpisode'
 
 const Player: React.FC = () => {
   const {
@@ -20,6 +21,7 @@ const Player: React.FC = () => {
     togglePlay,
     hasPrevious,
     episodeList,
+    clearPlayer,
     isShuffling,
     playPrevious,
     toggleShuffle,
@@ -30,6 +32,29 @@ const Player: React.FC = () => {
   const audioRef = useRef<HTMLAudioElement>(null)
 
   const episode = episodeList[currentEpisodeIndex]
+
+  const [progressAudio, setProgressAudio] = useState<number>(0)
+
+  function setProgressListener() {
+    audioRef.current!.currentTime = 0
+
+    audioRef.current!.addEventListener('timeupdate', () => {
+      setProgressAudio(Math.floor(audioRef.current!.currentTime))
+    })
+  }
+
+  function handleTrackPosition(value: number) {
+    audioRef.current!.currentTime = value
+    setProgressAudio(value)
+  }
+
+  function playNextEpisode() {
+    if (hasNext) {
+      playNext()
+    } else {
+      clearPlayer()
+    }
+  }
 
   useEffect(() => {
     if (!audioRef.current) {
@@ -93,28 +118,40 @@ const Player: React.FC = () => {
           }
         >
           <div className="progressPodcast">
-            <span className="initialTimePodcast">00:00</span>
+            <span className="initialTimePodcast">
+              {formatedDurationTimeEpisode(progressAudio)}
+            </span>
             {episode ? (
               <Slider
+                value={progressAudio}
+                max={episode.duration}
+                onChange={handleTrackPosition}
                 className="sliderProgressBar"
                 trackStyle={{ backgroundColor: '#E8C468' }}
                 railStyle={{ backgroundColor: '#572459' }}
-                handleStyle={{ borderColor: '#E8C468', borderWidth: 4 }}
+                handleStyle={{
+                  backgroundColor: '#E8C468',
+                  borderWidth: 0
+                }}
               />
             ) : (
               <div className="statusProgressBarPodcast"></div>
             )}
-            <span className="finalTimePodcast">00:00</span>
+            <span className="finalTimePodcast">
+              {formatedDurationTimeEpisode(episode?.duration ?? 0)}
+            </span>
           </div>
 
           {episode && (
             <audio // CONTROLE DE VOLUME DA TAG AUDIO É POSSÍVEL UTILIZANDO A PROPRIEDADE "current" E O ATRIBUTO "volume" > audioRef.current.volume
               autoPlay
               ref={audioRef}
-              src={episode.url}
               loop={isLooping}
+              src={episode.url}
+              onEnded={playNextEpisode}
               onPlay={() => setPlayingState(true)}
               onPause={() => setPlayingState(false)}
+              onLoadedMetadata={setProgressListener}
             />
           )}
 
@@ -130,7 +167,9 @@ const Player: React.FC = () => {
               <span>
                 <Button
                   type="button"
-                  disabled={!episode}
+                  disabled={
+                    !episode || episodeList.length - currentEpisodeIndex <= 2
+                  }
                   className={isShuffling ? 'button isShuffling' : 'button'}
                 >
                   <img

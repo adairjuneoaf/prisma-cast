@@ -63,7 +63,7 @@ const CardEpisodePodcast: React.FC<episode> = ({
             <p>{durationFormated}</p>
           </span>
           <span className="buttonPlayEpisodePodcast">
-            <Tooltip title={`Adicionar a playlist episódio ${title}`} arrow>
+            <Tooltip title="Adicionar o episódio a playlist" arrow>
               <Button className="button">
                 <img
                   src="/svg/add-play.svg"
@@ -72,7 +72,7 @@ const CardEpisodePodcast: React.FC<episode> = ({
                 />
               </Button>
             </Tooltip>
-            <Tooltip title={`Play no episódio ${title}`} arrow>
+            <Tooltip title="Play no episódio" arrow>
               <Button className="button">
                 <img
                   src="/svg/play-green.svg"
