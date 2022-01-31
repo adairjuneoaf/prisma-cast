@@ -45,11 +45,11 @@ const PlayerContextProvider: React.FC<PlayerContextProvider> = ({
   const [currentEpisodeIndex, setCurrentEpisodeIndex] = useState(0)
   const [listEpisodesShuffled, setListEpisodesShuffled] = useState<any>([])
 
-  console.log('lista de episodios atual', episodeList)
-  console.log('lista de episodios embaralhada', listEpisodesShuffled)
+  // console.log('lista de episodios atual', episodeList)
+  // console.log('lista de episodios embaralhada', listEpisodesShuffled)
 
-  console.log('episodio atual', currentEpisodeIndex)
-  console.log('quantidade de episodios', episodeList.length)
+  // console.log('episodio atual', currentEpisodeIndex)
+  // console.log('quantidade de episodios', episodeList.length)
 
   const hasNext: boolean = currentEpisodeIndex + 1 < episodeList.length
   const hasPrevious: boolean = currentEpisodeIndex > 0
