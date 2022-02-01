@@ -3,9 +3,9 @@ import Image from 'next/image'
 
 import { PlayerContext } from '../contexts/PlayerContext'
 
-import { Container, Content } from '../styles/components/Player'
-import Tooltip from '@mui/material/Tooltip'
 import Button from '@mui/material/Button'
+import Tooltip from '@mui/material/Tooltip'
+import { Container, Content } from '../styles/components/Player'
 
 import Slider from 'rc-slider'
 import 'rc-slider/assets/index.css'
