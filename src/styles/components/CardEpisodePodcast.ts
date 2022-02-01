@@ -32,10 +32,11 @@ export const Container = styled.div`
 
   .infoEpisodePodcast {
     width: 100%;
+    height: 100%;
 
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
 
     padding: 0 0 0 1rem;
 

@@ -1,12 +1,27 @@
-import { Button, Tooltip } from '@mui/material'
+import React, { useContext } from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
+
+import { PlayerContext } from '../contexts/PlayerContext'
+
+import HomeIcon from '@mui/icons-material/Home'
+import { Button, Tooltip } from '@mui/material'
+import PlaylistRemoveIcon from '@mui/icons-material/PlaylistRemove'
 
 import { Content } from '../styles/pages/playlist'
+import { formatedDurationTimeEpisode } from '../utils/formatedDurationTimeEpisode'
+
+interface Episode {
+  title: string
+  members: string
+  duration: number
+  thumbnail: string
+}
 
 const Playlist: React.FC = () => {
+  const { episodeList, currentEpisodeIndex } = useContext(PlayerContext)
+
   return (
     <Content>
       <Head>
@@ -17,8 +32,19 @@ const Playlist: React.FC = () => {
 
       <div className="headPagePlaylist">
         <h2>Playlist</h2>
-        <Tooltip title="Limpar playlist de episódios" arrow>
-          <span>
+
+        <span>
+          <Link href="/">
+            <Tooltip title="Voltar a página de episódios" arrow>
+              <span>
+                <Button type="button" className="buttonNavigationPage">
+                  <HomeIcon sx={{ fontSize: 24, color: '#EACE5D' }} />
+                </Button>
+              </span>
+            </Tooltip>
+          </Link>
+
+          {/* <Tooltip title="Limpar playlist de episódios" arrow>
             <Button
               type="button"
               variant="text"
@@ -26,19 +52,21 @@ const Playlist: React.FC = () => {
             >
               Limpar playlist
             </Button>
-          </span>
-        </Tooltip>
+          </Tooltip> */}
+        </span>
       </div>
       <div className="episodePlaying">
         <h4>Em reprodução...</h4>
         <table>
           <tbody>
             <tr>
-              <td className="indexEpisode">1</td>
+              <td className="indexEpisode">
+                <div></div>
+              </td>
               <td className="imgEpisode">
                 <div>
                   <Image
-                    src="https://storage.googleapis.com/golden-wind/nextlevelweek/05-podcastr/autenticacao.jpg"
+                    src={episodeList[currentEpisodeIndex].thumbnail}
                     width="192"
                     height="192"
                     objectFit="cover"
@@ -47,63 +75,66 @@ const Playlist: React.FC = () => {
                 </div>
               </td>
               <td className="infoEpisode">
-                <Link href={`/`}>
-                  <a>
-                    FalaDev #21 - Estratégias de autenticação, JWT, OAuth, qual
-                    usar?
-                  </a>
+                <Link href={`/episodes/${episodeList[currentEpisodeIndex].id}`}>
+                  <a>{episodeList[currentEpisodeIndex].title}</a>
                 </Link>
-                <p>Diego Fernandes, Higo Ribeiro e Guilherme Pellizzetti</p>
+                <p>{episodeList[currentEpisodeIndex].members}</p>
               </td>
-              <td className="playTimeEpisode">00:24:23</td>
-              <td className="buttonsEpisode"></td>
+              <td className="playTimeEpisode">
+                {formatedDurationTimeEpisode(
+                  episodeList[currentEpisodeIndex].duration
+                )}
+              </td>
+              {/* <td className="buttonsEpisode"></td> */}
             </tr>
           </tbody>
         </table>
       </div>
 
       <div className="nextEpisodes">
-        <h4>Próximos na fila</h4>
-        <table>
+        <h4>Fila de reprodução</h4>
+        <table cellSpacing="0">
           <tbody>
-            <tr>
-              <td className="indexEpisode">1</td>
-              <td className="imgEpisode">
-                <div>
-                  <Image
-                    src="https://storage.googleapis.com/golden-wind/nextlevelweek/05-podcastr/autenticacao.jpg"
-                    width="192"
-                    height="192"
-                    objectFit="cover"
-                    className="imgPodcast"
-                  />
-                </div>
-              </td>
-              <td className="infoEpisode">
-                <Link href={`/`}>
-                  <a>
-                    FalaDev #21 - Estratégias de autenticação, JWT, OAuth, qual
-                    usar?
-                  </a>
-                </Link>
-                <p>Diego Fernandes, Higo Ribeiro e Guilherme Pellizzetti</p>
-              </td>
-              <td className="playTimeEpisode">00:24:23</td>
-              <td className="buttonsEpisode">
-                <Tooltip
-                  title="Remover episódio da playlist"
-                  arrow
-                  placement="left"
-                >
-                  <Button size="medium" className="button">
-                    <img
-                      src="/svg/remove.svg"
-                      alt="Icone que faz referência para remover episódio da playlist"
-                    />
-                  </Button>
-                </Tooltip>
-              </td>
-            </tr>
+            {episodeList.map((data, index) => {
+              return (
+                <tr key={data.id}>
+                  <td className="indexEpisode">{index + 1}</td>
+                  <td className="imgEpisode">
+                    <div>
+                      <Image
+                        src={data.thumbnail}
+                        width="192"
+                        height="192"
+                        objectFit="cover"
+                        className="imgPodcast"
+                      />
+                    </div>
+                  </td>
+                  <td className="infoEpisode">
+                    <Link href={`/episodes/${data.id}`}>
+                      <a>{data.title}</a>
+                    </Link>
+                    <p>{data.members}</p>
+                  </td>
+                  <td className="playTimeEpisode">
+                    {formatedDurationTimeEpisode(data.duration)}
+                  </td>
+                  {/* <td className="buttonsEpisode">
+                    <Tooltip
+                      title="Remover episódio da playlist"
+                      arrow
+                      placement="left"
+                    >
+                      <Button size="medium" className="button">
+                        <PlaylistRemoveIcon
+                          sx={{ fontSize: 24, color: '#EACE5D' }}
+                        />
+                      </Button>
+                    </Tooltip>
+                  </td> */}
+                </tr>
+              )
+            })}
           </tbody>
         </table>
       </div>

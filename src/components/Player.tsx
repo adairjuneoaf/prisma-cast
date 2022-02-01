@@ -171,11 +171,11 @@ const Player: React.FC = () => {
                     !episode || episodeList.length - currentEpisodeIndex <= 2
                   }
                   className={isShuffling ? 'button isShuffling' : 'button'}
+                  onClick={toggleShuffle}
                 >
                   <img
                     src="/svg/shuffle.svg"
                     alt="Icones de controle do player do Podcast"
-                    onClick={toggleShuffle}
                   />
                 </Button>
               </span>
@@ -254,11 +254,11 @@ const Player: React.FC = () => {
                   type="button"
                   disabled={!episode}
                   className={isLooping ? 'button isLooping' : 'button'}
+                  onClick={toggleLoop}
                 >
                   <img
                     src="/svg/repeat.svg"
                     alt="Icones de controle do player do Podcast"
-                    onClick={toggleLoop}
                   />
                 </Button>
               </span>

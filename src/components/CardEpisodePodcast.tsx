@@ -2,8 +2,10 @@ import React, { useContext } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 
-import Tooltip from '@mui/material/Tooltip'
 import Button from '@mui/material/Button'
+import Tooltip from '@mui/material/Tooltip'
+import QueueIcon from '@mui/icons-material/Queue'
+import PlayArrowIcon from '@mui/icons-material/PlayArrow'
 
 import { PlayerContext } from '../contexts/PlayerContext'
 
@@ -64,21 +66,27 @@ const CardEpisodePodcast: React.FC<episode> = ({
           </span>
           <span className="buttonPlayEpisodePodcast">
             <Tooltip title="Adicionar o episódio a playlist" arrow>
-              <Button className="button">
-                <img
+              <Button
+                className="button"
+                onClick={() => playList(episodeSelectedByUser)}
+              >
+                {/* <img
                   src="/svg/add-play.svg"
                   alt="Botão para adicionar episódio a playlist"
-                  onClick={() => playList(episodeSelectedByUser)}
-                />
+                /> */}
+                <QueueIcon sx={{ fontSize: 24, color: '#EACE5D' }} />
               </Button>
             </Tooltip>
             <Tooltip title="Play no episódio" arrow>
-              <Button className="button">
-                <img
+              <Button
+                className="button"
+                onClick={() => play(episodeSelectedByUser)}
+              >
+                {/* <img
                   src="/svg/play-green.svg"
                   alt="Botão para iniciar o episódio de Podcast"
-                  onClick={() => play(episodeSelectedByUser)}
-                />
+                /> */}
+                <PlayArrowIcon sx={{ fontSize: 24, color: '#EACE5D' }} />
               </Button>
             </Tooltip>
           </span>

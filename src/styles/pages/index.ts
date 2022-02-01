@@ -67,6 +67,34 @@ export const Content = styled.div`
       height: auto;
     }
 
+    .headTitleTableAllEpisodes {
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+      justify-content: space-between;
+
+      .buttonNavigationPage {
+        min-width: 0;
+        font-size: 0;
+        padding: 0.5rem;
+
+        text-transform: none;
+
+        border-radius: 25%;
+        background: ${props => props.theme.colors.white};
+        border: 1px solid ${props => props.theme.colors.line};
+
+        color: ${props => props.theme.colors.title};
+
+        cursor: pointer;
+      }
+
+      .isActivePlaylist {
+        pointer-events: none;
+        opacity: 0.5;
+      }
+    }
+
     .headTableEpisodes {
       td {
         font-size: 0.875rem;

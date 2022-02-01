@@ -44,6 +44,8 @@ const PlayerContextProvider: React.FC<PlayerContextProvider> = ({
   const [isShuffling, setIsShuffling] = useState<boolean>(false)
   const [currentEpisodeIndex, setCurrentEpisodeIndex] = useState(0)
   const [listEpisodesShuffled, setListEpisodesShuffled] = useState<any>([])
+  const [listEpisodesCurrentPlaylist, setListEpisodesCurrentPlaylist] =
+    useState<any>([])
 
   // console.log('lista de episodios atual', episodeList)
   // console.log('lista de episodios embaralhada', listEpisodesShuffled)

@@ -4,6 +4,8 @@ import Image from 'next/image'
 
 import Button from '@mui/material/Button'
 import Tooltip from '@mui/material/Tooltip'
+import QueueIcon from '@mui/icons-material/Queue'
+import PlayArrowIcon from '@mui/icons-material/PlayArrow'
 
 import { Container } from '../styles/components/TableEpisodesPodcast'
 import { PlayerContext } from '../contexts/PlayerContext'
@@ -58,12 +60,15 @@ const TableEpisodesPodcast: React.FC<episode> = ({
       <td className="durationPodcast">{durationFormated}</td>
       <td className="buttonPlayPodcast">
         <Tooltip title="Adicionar o episódio a playlist" arrow>
-          <Button className="button">
-            <img
+          <Button
+            className="button"
+            onClick={() => playList(episodeSelectedByUser)}
+          >
+            {/* <img
               src="/svg/add-play.svg"
               alt="Botão para adicionar episódio a playlist"
-              onClick={() => playList(episodeSelectedByUser)}
-            />
+            /> */}
+            <QueueIcon sx={{ fontSize: 24, color: '#EACE5D' }} />
           </Button>
         </Tooltip>
         <Tooltip title="Play no episódio" arrow>
@@ -72,10 +77,11 @@ const TableEpisodesPodcast: React.FC<episode> = ({
             className="button"
             onClick={() => play(episodeSelectedByUser)}
           >
-            <img
+            {/* <img
               src="/svg/play-green.svg"
               alt="Botão para iniciar o episódio de Podcast"
-            />
+            /> */}
+            <PlayArrowIcon sx={{ fontSize: 24, color: '#EACE5D' }} />
           </Button>
         </Tooltip>
       </td>

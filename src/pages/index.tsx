@@ -1,16 +1,23 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Head from 'next/head'
+import Link from 'next/link'
+
+import CardEpisodePodcast from '../components/CardEpisodePodcast'
+import TableEpisodesPodcast from '../components/TableEpisodesPodcast'
+
 import { GetStaticProps } from 'next'
 
 import ptBR from 'date-fns/locale/pt-BR'
 import { format, parseISO } from 'date-fns'
 
+import { Button, Tooltip } from '@mui/material'
+import PlaylistPlayIcon from '@mui/icons-material/PlaylistPlay'
+
 import { api } from '../services/api'
 import { formatedDurationTimeEpisode } from '../utils/formatedDurationTimeEpisode'
 
 import { Container, Content } from '../styles/pages/index'
-import CardEpisodePodcast from '../components/CardEpisodePodcast'
-import TableEpisodesPodcast from '../components/TableEpisodesPodcast'
+import { PlayerContext } from '../contexts/PlayerContext'
 
 interface episode {
   id: string
@@ -48,6 +55,8 @@ const Home: React.FC<HomeDataProps> = ({
   allEpisodesPodcast,
   latestEpisodesPodcast
 }) => {
+  const { episodeList } = useContext(PlayerContext)
+
   return (
     <Container>
       <Head>
@@ -77,7 +86,26 @@ const Home: React.FC<HomeDataProps> = ({
           </div>
         </section>
         <section className="allEpisodes">
-          <h2>Todos os episódios</h2>
+          <div className="headTitleTableAllEpisodes">
+            <h2>Todos os episódios</h2>
+            <div className={episodeList.length > 2 ? '' : 'isActivePlaylist'}>
+              <Link href="/playlist">
+                <Tooltip title="Playlist em reprodução" arrow>
+                  <span>
+                    <Button
+                      type="button"
+                      className="buttonNavigationPage"
+                      disabled={episodeList.length <= 2}
+                    >
+                      <PlaylistPlayIcon
+                        sx={{ fontSize: 32, color: '#EACE5D' }}
+                      />
+                    </Button>
+                  </span>
+                </Tooltip>
+              </Link>
+            </div>
+          </div>
           <table cellSpacing="0">
             <thead>
               <tr className="headTableEpisodes">
