@@ -79,6 +79,18 @@ const Player: React.FC = () => {
           <h3>Tocando agora</h3>
         </div>
 
+        <div className="playlistCount">
+          {episodeList.length <= 0 ? (
+            <h3>Playlist está vazia</h3>
+          ) : (
+            <h3>
+              Playlist com&nbsp;
+              <span className="highlightCount">{episodeList.length}</span>
+              &nbsp;episódio(s)
+            </h3>
+          )}
+        </div>
+
         <div className="contentPlayer">
           <div
             className={

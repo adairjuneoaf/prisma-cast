@@ -3,14 +3,14 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { PlayerContext } from '../contexts/PlayerContext'
+import { PlayerContext } from '../../contexts/PlayerContext'
 
 import HomeIcon from '@mui/icons-material/Home'
 import { Button, Tooltip } from '@mui/material'
 import PlaylistRemoveIcon from '@mui/icons-material/PlaylistRemove'
 
 import { Content } from '../styles/pages/playlist'
-import { formatedDurationTimeEpisode } from '../utils/formatedDurationTimeEpisode'
+import { formatedDurationTimeEpisode } from '../../utils/formatedDurationTimeEpisode'
 
 interface Episode {
   title: string

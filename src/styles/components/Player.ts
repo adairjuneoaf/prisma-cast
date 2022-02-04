@@ -37,6 +37,24 @@ export const Content = styled.section`
     }
   }
 
+  .playlistCount {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    h3 {
+      font-size: 1rem;
+      font-weight: 40;
+      color: ${props => props.theme.colors.white};
+
+      .highlightCount {
+        font-weight: 600;
+
+        color: ${props => props.theme.colors.alternative_tertiary};
+      }
+    }
+  }
+
   .contentPlayer {
     display: flex;
     align-items: center;

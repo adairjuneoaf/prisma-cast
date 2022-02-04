@@ -25,6 +25,7 @@ const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
         <Container>
           <div className="podcast">
             <HeaderApp />
+
             <Component {...pageProps} />
           </div>
 
