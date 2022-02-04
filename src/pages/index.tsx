@@ -1,24 +1,20 @@
 import React, { useContext } from 'react'
+import { GetStaticProps } from 'next'
 import Head from 'next/head'
-import Link from 'next/link'
 
+import FooterApp from '../components/FooterApp'
 import CardEpisodePodcast from '../components/CardEpisodePodcast'
 import TableEpisodesPodcast from '../components/TableEpisodesPodcast'
 
-import { GetStaticProps } from 'next'
+import { PlayerContext } from '../contexts/PlayerContext'
 
 import ptBR from 'date-fns/locale/pt-BR'
 import { format, parseISO } from 'date-fns'
-
-import { Button, Tooltip } from '@mui/material'
-import PlaylistPlayIcon from '@mui/icons-material/PlaylistPlay'
 
 import { api } from '../services/api'
 import { formatedDurationTimeEpisode } from '../utils/formatedDurationTimeEpisode'
 
 import { Container, Content } from '../styles/pages/index'
-import { PlayerContext } from '../contexts/PlayerContext'
-import FooterApp from '../components/FooterApp'
 
 interface episode {
   id: string
