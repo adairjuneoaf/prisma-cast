@@ -18,7 +18,7 @@ export const Content = styled.div`
     font-family: 'Lexend', sans-serif;
     font-weight: 600;
     letter-spacing: 1rem;
-    color: ${props => props.theme.colors.alternative_tertiary};
+    color: ${props => props.theme.colors.yellow_medium};
   }
 
   p {
@@ -26,7 +26,7 @@ export const Content = styled.div`
     font-family: 'Lexend', sans-serif;
     font-weight: 600;
     text-transform: uppercase;
-    color: ${props => props.theme.colors.text_secondary};
+    color: ${props => props.theme.colors.text};
   }
 
   .gridLinksPage {
