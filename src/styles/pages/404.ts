@@ -40,8 +40,8 @@ export const Content = styled.div`
       margin-left: 0.5rem;
 
       border-radius: 25%;
-      background: ${props => props.theme.colors.white};
-      border: 1px solid ${props => props.theme.colors.line};
+      background: ${props => props.theme.colors.background_primary};
+      border: 1px solid ${props => props.theme.colors.lines};
 
       color: ${props => props.theme.colors.title};
 
