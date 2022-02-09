@@ -15,15 +15,12 @@ export const Content = styled.section`
   }
 
   &::-webkit-scrollbar-track {
-    background: ${props => props.theme.colors.white};
   }
 
   &::-webkit-scrollbar-thumb {
-    background: ${props => props.theme.colors.line};
   }
 
   &::-webkit-scrollbar-thumb:hover {
-    background: ${props => props.theme.colors.text_primary};
   }
 
   .headPagePlaylist {
@@ -52,8 +49,8 @@ export const Content = styled.section`
         text-transform: none;
 
         border-radius: 25%;
-        background: ${props => props.theme.colors.white};
-        border: 1px solid ${props => props.theme.colors.line};
+        background: ${props => props.theme.colors.background_primary};
+        border: 1px solid ${props => props.theme.colors.lines};
 
         color: ${props => props.theme.colors.title};
 
@@ -67,7 +64,7 @@ export const Content = styled.section`
         border-radius: 16px;
         text-transform: none;
         padding: 0.875rem 1rem;
-        color: ${props => props.theme.colors.white};
+        color: ${props => props.theme.colors.text_alternative};
         background: ${props => props.theme.colors.background_secondary};
       }
     }
@@ -89,7 +86,7 @@ export const Content = styled.section`
             width: 10px;
             height: 10px;
             border-radius: 5px;
-            background: ${props => props.theme.colors.alternative_tertiary};
+            background: ${props => props.theme.colors.background_primary};
           }
         }
         .imgEpisode {
@@ -115,7 +112,7 @@ export const Content = styled.section`
 
             transition: color 0.2s;
             &:hover {
-              color: ${props => props.theme.colors.text_secondary};
+              color: ${props => props.theme.colors.text};
             }
           }
           p {
@@ -179,7 +176,7 @@ export const Content = styled.section`
 
             transition: color 0.2s;
             &:hover {
-              color: ${props => props.theme.colors.text_secondary};
+              color: ${props => props.theme.colors.text};
             }
           }
           p {
@@ -204,8 +201,8 @@ export const Content = styled.section`
             padding: 0.5rem;
 
             border-radius: 25%;
-            background: ${props => props.theme.colors.white};
-            border: 1px solid ${props => props.theme.colors.line};
+            background: ${props => props.theme.colors.background_primary};
+            border: 1px solid ${props => props.theme.colors.lines};
 
             color: ${props => props.theme.colors.title};
 
