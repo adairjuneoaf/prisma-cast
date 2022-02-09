@@ -14,19 +14,19 @@ export const Container = styled.div`
   overflow-y: scroll;
 
   &::-webkit-scrollbar {
-    width: 0.5rem;
+    width: 0.6rem;
   }
 
   &::-webkit-scrollbar-track {
-    background: ${props => props.theme.colors.white};
+    background: ${props => props.theme.colors.lines};
   }
 
   &::-webkit-scrollbar-thumb {
-    background: ${props => props.theme.colors.line};
+    background: ${props => props.theme.colors.hover};
   }
 
   &::-webkit-scrollbar-thumb:hover {
-    background: ${props => props.theme.colors.text_primary};
+    background: ${props => props.theme.colors.yellow_medium};
   }
 `
 export const Content = styled.div`
@@ -81,8 +81,8 @@ export const Content = styled.div`
         text-transform: none;
 
         border-radius: 25%;
-        background: ${props => props.theme.colors.white};
-        border: 1px solid ${props => props.theme.colors.line};
+        /* background: ${props => props.theme.colors.text};
+        border: 1px solid ${props => props.theme.colors.lines}; */
 
         color: ${props => props.theme.colors.title};
 
@@ -100,8 +100,8 @@ export const Content = styled.div`
         font-size: 0.875rem;
         font-weight: 500;
         padding: 0 0 2rem 0;
-        border-bottom: 2px solid ${props => props.theme.colors.line};
-        color: ${props => props.theme.colors.text_primary};
+        border-bottom: 2px solid ${props => props.theme.colors.lines};
+        color: ${props => props.theme.colors.text};
 
         cursor: default;
       }

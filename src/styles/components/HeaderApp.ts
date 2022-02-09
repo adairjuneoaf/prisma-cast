@@ -11,9 +11,9 @@ export const Container = styled.header`
 
   cursor: default;
 
-  background: ${props => props.theme.colors.white};
+  background: ${props => props.theme.colors.background_primary};
 
-  border-bottom: 2px solid #e6e8eb;
+  border-bottom: 2px solid ${props => props.theme.colors.lines};
 
   .infoAboutApp {
     display: flex;
@@ -23,29 +23,67 @@ export const Container = styled.header`
 
     gap: 1.5rem;
 
-    img {
-      width: 192px;
-      cursor: pointer;
+    > a {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      gap: 1rem;
+
+      img {
+        width: 24px;
+        cursor: pointer;
+      }
+
+      font-family: Lexend, 'sans-serif';
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: ${props => props.theme.colors.title};
+
+      text-decoration: none;
     }
 
     .divider {
       width: 2px;
       height: 2rem;
-      background: #e6e8eb;
+      background: ${props => props.theme.colors.lines};
     }
 
-    color: ${props => props.theme.colors.text_secondary};
+    color: ${props => props.theme.colors.text};
   }
 
   .infoAboutUser {
     display: flex;
-    flex-direction: row;
     align-items: center;
+    flex-direction: row;
 
-    color: ${props => props.theme.colors.text_secondary};
+    gap: 1.125rem;
+
+    color: ${props => props.theme.colors.text};
 
     p {
       text-transform: capitalize;
+    }
+
+    .user {
+      .toggleThemeApp {
+        min-width: 0;
+
+        font-size: 0;
+        padding: 0.5rem;
+        border: 0;
+
+        display: flex;
+        align-items: center;
+
+        border-radius: 25%;
+        background: ${props => props.theme.colors.background_primary};
+        border: 1px solid ${props => props.theme.colors.lines};
+
+        color: ${props => props.theme.colors.hover};
+
+        cursor: pointer;
+      }
     }
   }
 `

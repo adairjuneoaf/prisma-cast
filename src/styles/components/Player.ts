@@ -33,7 +33,7 @@ export const Content = styled.section`
 
     h3 {
       font-size: 1rem;
-      color: ${props => props.theme.colors.white};
+      color: ${props => props.theme.colors.text_alternative};
     }
   }
 
@@ -45,12 +45,12 @@ export const Content = styled.section`
     h3 {
       font-size: 1rem;
       font-weight: 40;
-      color: ${props => props.theme.colors.white};
+      color: ${props => props.theme.colors.text_alternative};
 
       .highlightCount {
         font-weight: 600;
 
-        color: ${props => props.theme.colors.alternative_tertiary};
+        color: ${props => props.theme.colors.yellow_medium};
       }
     }
   }
@@ -84,7 +84,7 @@ export const Content = styled.section`
       h4 {
         font-size: 1rem;
         align-items: center;
-        color: ${props => props.theme.colors.white};
+        color: ${props => props.theme.colors.text_alternative};
         padding: 1rem;
       }
     }
@@ -100,7 +100,7 @@ export const Content = styled.section`
         font-size: 1.25rem;
         line-height: 30px;
         text-align: center;
-        color: ${props => props.theme.colors.white};
+        color: ${props => props.theme.colors.text_alternative};
 
         padding: 1rem 0;
       }
@@ -111,12 +111,12 @@ export const Content = styled.section`
         line-height: 19px;
         text-align: center;
         font-size: 0.875rem;
-        color: ${props => props.theme.colors.text_primary};
+        color: ${props => props.theme.colors.text_alternative};
       }
     }
 
     .isNotActivePodcastImg {
-      border: 1.5px dashed ${props => props.theme.colors.alternative_secondary};
+      //border: 1.5px dashed ${props => props.theme.colors.purple_dark};
     }
   }
 
@@ -145,7 +145,7 @@ export const Content = styled.section`
 
         min-width: 64px;
 
-        color: ${props => props.theme.colors.white};
+        color: ${props => props.theme.colors.text_alternative};
       }
 
       .sliderProgressBar {
@@ -160,7 +160,7 @@ export const Content = styled.section`
 
         border-radius: 24px;
 
-        background: ${props => props.theme.colors.alternative_quarter};
+        background: ${props => props.theme.colors.purple_dark};
 
         flex: 5;
       }
@@ -173,7 +173,7 @@ export const Content = styled.section`
 
         min-width: 64px;
 
-        color: ${props => props.theme.colors.white};
+        color: ${props => props.theme.colors.text_alternative};
       }
     }
 
@@ -194,7 +194,7 @@ export const Content = styled.section`
 
         border-radius: 16px;
 
-        color: ${props => props.theme.colors.white};
+        color: ${props => props.theme.colors.text_alternative};
 
         transition: all 0.5s;
 
@@ -204,7 +204,7 @@ export const Content = styled.section`
         }
 
         &:hover:not(:disabled) {
-          background: ${props => props.theme.colors.alternative_quarter};
+          background: ${props => props.theme.colors.purple_dark};
         }
       }
 
@@ -216,7 +216,7 @@ export const Content = styled.section`
       .isPlayerPause,
       .isShuffling,
       .isLooping {
-        background: ${props => props.theme.colors.alternative_quarter};
+        background: ${props => props.theme.colors.purple_dark};
       }
     }
   }

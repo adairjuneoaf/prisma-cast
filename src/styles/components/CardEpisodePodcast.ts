@@ -10,8 +10,8 @@ export const Container = styled.div`
   justify-content: flex-start;
 
   padding: 1.25rem;
-  background: ${props => props.theme.colors.white};
-  border: 1px solid ${props => props.theme.colors.line};
+  background: ${props => props.theme.colors.background_primary};
+  border: 1px solid ${props => props.theme.colors.lines};
 
   border-radius: 24px;
 
@@ -59,7 +59,7 @@ export const Container = styled.div`
         transition: color 0.2s;
 
         &:hover {
-          color: ${props => props.theme.colors.text_secondary};
+          color: ${props => props.theme.colors.hover};
         }
       }
       p {
@@ -84,7 +84,7 @@ export const Container = styled.div`
         #divider {
           width: 4px;
           height: 4px;
-          background: ${props => props.theme.colors.line};
+          background: ${props => props.theme.colors.lines};
           border-radius: 2px;
         }
       }
@@ -109,8 +109,8 @@ export const Container = styled.div`
           padding: 0.5rem;
 
           border-radius: 25%;
-          background: ${props => props.theme.colors.white};
-          border: 1px solid ${props => props.theme.colors.line};
+          background: ${props => props.theme.colors.background_primary};
+          border: 1px solid ${props => props.theme.colors.lines};
 
           color: ${props => props.theme.colors.title};
 

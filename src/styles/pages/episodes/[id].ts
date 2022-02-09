@@ -7,19 +7,19 @@ export const Container = styled.section`
   overflow-y: scroll;
 
   &::-webkit-scrollbar {
-    width: 0.5rem;
+    width: 0.6rem;
   }
 
   &::-webkit-scrollbar-track {
-    background: ${props => props.theme.colors.white};
+    background: ${props => props.theme.colors.lines};
   }
 
   &::-webkit-scrollbar-thumb {
-    background: ${props => props.theme.colors.line};
+    background: ${props => props.theme.colors.hover};
   }
 
   &::-webkit-scrollbar-thumb:hover {
-    background: ${props => props.theme.colors.text_primary};
+    background: ${props => props.theme.colors.yellow_medium};
   }
 `
 
@@ -102,7 +102,7 @@ export const Content = styled.div`
       gap: 1rem;
 
       p {
-        color: ${props => props.theme.colors.text_secondary};
+        color: ${props => props.theme.colors.text};
       }
 
       p.launchDateEpisodePodcast {
@@ -113,7 +113,7 @@ export const Content = styled.div`
         width: 4px;
         height: 4px;
         border-radius: 2px;
-        background: ${props => props.theme.colors.line};
+        background: ${props => props.theme.colors.lines};
       }
     }
 
@@ -122,14 +122,14 @@ export const Content = styled.div`
       height: 2px;
 
       margin: 1.125rem 0 2rem 0;
-      background: ${props => props.theme.colors.line};
+      background: ${props => props.theme.colors.lines};
     }
 
     .descriptionEpisodePodcast {
       font-size: 1rem;
       line-height: 24px;
       text-align: justify;
-      color: ${props => props.theme.colors.text_secondary};
+      color: ${props => props.theme.colors.text};
     }
   }
 `

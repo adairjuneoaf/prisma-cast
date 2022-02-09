@@ -13,11 +13,12 @@ export const Content = styled.div`
   margin: 4rem 0 0 0;
 
   background: ${props => props.theme.colors.background_primary};
+  color: ${props => props.theme.colors.text};
 
   a.highlightedInfos {
     font-weight: 500;
     text-decoration: none;
 
-    color: ${props => props.theme.colors.background_secondary};
+    color: ${props => props.theme.colors.purple_dark};
   }
 `

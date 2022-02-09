@@ -1,22 +1,28 @@
-import React from 'react'
+import React, { useContext, useState } from 'react'
 import type { AppProps } from 'next/app'
 
+import PlayerContextProvider from '../contexts/PlayerContext'
+
 import { Toaster } from 'react-hot-toast'
+import { ThemeProvider } from 'styled-components'
 
 import Player from '../components/Player'
 import HeaderApp from '../components/HeaderApp'
 
-import theme from '../styles/theme'
 import GlobalStyle from '../styles/global'
 import { Container } from '../styles/pages/app'
-import { ThemeProvider } from 'styled-components'
-
-import PlayerContextProvider from '../contexts/PlayerContext'
+import { LightTheme, DarkTheme } from '../styles/theme'
 
 const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
+  const [toggleThemeApp, setToggleThemeApp] = useState(LightTheme)
+
+  function ChangeThemeApp() {
+    setToggleThemeApp(toggleThemeApp === DarkTheme ? LightTheme : DarkTheme)
+  }
+
   return (
-    <ThemeProvider theme={theme}>
-      <PlayerContextProvider>
+    <PlayerContextProvider>
+      <ThemeProvider theme={toggleThemeApp}>
         <Toaster
           position="bottom-center"
           reverseOrder={false}
@@ -24,7 +30,10 @@ const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
         />
         <Container>
           <div className="podcast">
-            <HeaderApp />
+            <HeaderApp
+              ChangeThemeApp={ChangeThemeApp}
+              toggleThemeApp={toggleThemeApp}
+            />
 
             <Component {...pageProps} />
           </div>
@@ -33,9 +42,9 @@ const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
             <Player />
           </div>
         </Container>
-      </PlayerContextProvider>
-      <GlobalStyle />
-    </ThemeProvider>
+        <GlobalStyle />
+      </ThemeProvider>
+    </PlayerContextProvider>
   )
 }
 

@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const Container = styled.tr`
   td {
     padding: 1rem 0;
-    border-bottom: 2px solid ${props => props.theme.colors.line};
+    border-bottom: 2px solid ${props => props.theme.colors.lines};
     border-collapse: collapse;
   }
 
@@ -12,7 +12,7 @@ export const Container = styled.tr`
     padding: 0 1.5rem 0 0;
   }
 
-  color: ${props => props.theme.colors.text_secondary};
+  color: ${props => props.theme.colors.text};
   cursor: default;
 
   .imgTitlePodcast {
@@ -45,7 +45,7 @@ export const Container = styled.tr`
       transition: color 0.2s;
 
       &:hover {
-        color: ${props => props.theme.colors.text_secondary};
+        color: ${props => props.theme.colors.hover};
       }
     }
   }
@@ -65,8 +65,8 @@ export const Container = styled.tr`
       margin-left: 0.5rem;
 
       border-radius: 25%;
-      background: ${props => props.theme.colors.white};
-      border: 1px solid ${props => props.theme.colors.line};
+      background: ${props => props.theme.colors.background_primary};
+      border: 1px solid ${props => props.theme.colors.lines};
 
       color: ${props => props.theme.colors.title};
 

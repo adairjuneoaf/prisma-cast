@@ -19,7 +19,7 @@ html{
 
 body {
     background: ${props => props.theme.colors.background_primary};
-    color: ${props => props.theme.colors.text_secondary};
+    color: ${props => props.theme.colors.text};
     -webkit-font-smoothing: antialiased;
 }
 

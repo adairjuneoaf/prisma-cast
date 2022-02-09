@@ -1,20 +1,37 @@
-const theme = {
+export const LightTheme = {
   colors: {
+    id: 'LightTheme',
+
     background_primary: '#F2F2F2',
     background_secondary: '#6F2E72',
 
+    text: '#808080',
     title: '#494D4B',
-    text_primary: '#D9D9D9',
-    text_secondary: '#808080',
+    lines: '#E6E8EB',
+    hover: '#BFBFBF',
 
-    alternative_primary: '#444444',
-    alternative_secondary: '#F2F2F2',
-    alternative_tertiary: '#E8C468',
-    alternative_quarter: '#572459',
+    purple_dark: '#572459',
+    yellow_medium: '#E8C468',
 
-    white: '#FFFFFF',
-    line: '#E6E8EB'
+    text_alternative: '#F2F2F2'
   }
 }
 
-export default theme
+export const DarkTheme = {
+  colors: {
+    id: 'DarkTheme',
+
+    background_primary: '#313131',
+    background_secondary: '#6F2E72',
+
+    text: '#F1F1F1',
+    title: '#F2F2F2',
+    lines: '#383838',
+    hover: '#595959',
+
+    purple_dark: '#572459',
+    yellow_medium: '#E8C468',
+
+    text_alternative: '#F2F2F2'
+  }
+}
