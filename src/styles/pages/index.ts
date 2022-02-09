@@ -107,4 +107,17 @@ export const Content = styled.div`
       }
     }
   }
+
+  @media only screen and (max-width: 1440px) {
+    .latestReleases {
+      .cardEpisode {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: flex-start;
+
+        gap: 2rem;
+      }
+    }
+  }
 `

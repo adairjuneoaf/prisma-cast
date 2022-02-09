@@ -106,8 +106,9 @@ const Home: React.FC<HomeDataProps> = ({
           <table cellSpacing="0">
             <thead>
               <tr className="headTableEpisodes">
+                <td>#</td>
                 <td>PODCAST</td>
-                <td>INTEGRATES</td>
+                {/* <td>INTEGRATES</td> */}
                 <td>DATA</td>
                 <td>DURAÇÃO</td>
                 <td>&nbsp;</td>

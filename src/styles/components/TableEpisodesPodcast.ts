@@ -7,27 +7,46 @@ export const Container = styled.tr`
     border-collapse: collapse;
   }
 
-  .participantsPodcast,
-  .dataLaunchPodcast {
-    padding: 0 1.5rem 0 0;
+  .dataLaunchPodcast,
+  .durationPodcast {
+    width: 96px;
+  }
+
+  .buttonPlayPodcast {
+    width: 112px;
+    height: auto;
   }
 
   color: ${props => props.theme.colors.text};
   cursor: default;
 
   .imgTitlePodcast {
-    > div {
-      width: 64px;
-      height: 64px;
+    width: 72px;
+    height: 72px;
+
+    padding-right: 1rem;
+
+    .imgEpisode {
+      display: flex;
+      align-items: center;
+
       .imgPodcast {
         border-radius: 8px;
       }
     }
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    justify-content: flex-start;
-    gap: 1rem;
+  }
+
+  .titleAndMembersPodcast {
+    //width: 150%;
+
+    div {
+      display: flex;
+      align-items: flex-start;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    padding-right: 1rem;
 
     a {
       padding: 0 1.5rem 0 0;
@@ -48,6 +67,10 @@ export const Container = styled.tr`
         color: ${props => props.theme.colors.hover};
       }
     }
+
+    /* white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; */
   }
 
   .dataLaunchPodcast {

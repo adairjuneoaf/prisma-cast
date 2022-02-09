@@ -42,7 +42,7 @@ const TableEpisodesPodcast: React.FC<episode> = ({
   return (
     <Container className="contentTableEpisodes">
       <td className="imgTitlePodcast">
-        <div>
+        <div className="imgEpisode">
           <Image
             src={thumbnail}
             width="192"
@@ -51,11 +51,16 @@ const TableEpisodesPodcast: React.FC<episode> = ({
             className="imgPodcast"
           />
         </div>
-        <Link href={`/episodes/${id}`}>
-          <a>{title}</a>
-        </Link>
       </td>
-      <td className="participantsPodcast">{members}</td>
+      <td className="titleAndMembersPodcast">
+        <div>
+          <Link href={`/episodes/${id}`}>
+            <a>{title}</a>
+          </Link>
+          <span className="participantsPodcast">{members}</span>
+        </div>
+      </td>
+      {/* <td className=""></td> */}
       <td className="dataLaunchPodcast">{publishedAt}</td>
       <td className="durationPodcast">{durationFormated}</td>
       <td className="buttonPlayPodcast">
