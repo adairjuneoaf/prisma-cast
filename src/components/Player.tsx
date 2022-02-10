@@ -255,8 +255,8 @@ const Player: React.FC = () => {
             <Tooltip
               title={
                 isLooping
-                  ? 'Desabilitar repetir o próximo episódio'
-                  : 'Habilitar repetir o próximo episódio'
+                  ? 'Desabilitar repetir o episódio'
+                  : 'Habilitar repetir o episódio'
               }
               arrow
               placement="left"

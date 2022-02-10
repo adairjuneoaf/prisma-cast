@@ -28,6 +28,11 @@ export const Container = styled.div`
   &::-webkit-scrollbar-thumb:hover {
     background: ${props => props.theme.colors.yellow_medium};
   }
+
+  /* @media only screen and (max-width: 1440px) {
+    width: 100%;
+    height: calc(100vh - 13.5rem);
+  } */
 `
 export const Content = styled.div`
   width: 100%;

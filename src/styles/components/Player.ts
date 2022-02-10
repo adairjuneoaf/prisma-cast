@@ -9,6 +9,17 @@ export const Container = styled.div`
   justify-content: center;
 
   background: ${props => props.theme.colors.background_secondary};
+
+  /* @media only screen and (max-width: 1440px) {
+    width: 100vw;
+    height: 8rem;
+
+    //position: fixed;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  } */
 `
 
 export const Content = styled.section`

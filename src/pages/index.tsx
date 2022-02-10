@@ -6,8 +6,6 @@ import FooterApp from '../components/FooterApp'
 import CardEpisodePodcast from '../components/CardEpisodePodcast'
 import TableEpisodesPodcast from '../components/TableEpisodesPodcast'
 
-import { PlayerContext } from '../contexts/PlayerContext'
-
 import ptBR from 'date-fns/locale/pt-BR'
 import { format, parseISO } from 'date-fns'
 
@@ -52,8 +50,6 @@ const Home: React.FC<HomeDataProps> = ({
   allEpisodesPodcast,
   latestEpisodesPodcast
 }) => {
-  const { episodeList } = useContext(PlayerContext)
-
   return (
     <Container>
       <Head>
