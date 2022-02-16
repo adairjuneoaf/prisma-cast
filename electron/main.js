@@ -1,6 +1,8 @@
 const { app, BrowserWindow } = require('electron')
+const { isDev } = require('electron-is-dev')
+const { path } = require('path')
 
-let window = BrowserWindow | null
+let window
 
 const createWindow = () => {
   window = new BrowserWindow({
@@ -10,14 +12,25 @@ const createWindow = () => {
     minWidth: 1440,
     minHeight: 920,
     skipTaskbar: true,
+    icon: 'public/icon.png',
     webPreferences: {
       nodeIntegration: false
     }
   })
 
-  window.on('closed', () => {})
+  window.on('closed', () => {
+    win = null
+  })
 
-  window.loadURL('http://localhost:3000')
+  window.loadURL(
+    isDev
+      ? 'http://localhost:3000'
+      : `file://${path.join(__dirname, '../build/index.html')}`
+  )
+
+  window.webContents.openDevTools()
+
+  window.setOverlayIcon('public/ico.png', 'Icone da aplicação.')
 
   window.once('ready-to-show', () => window.show())
 }
@@ -31,42 +44,3 @@ app.on('window-all-closed', () => {
     app.quit()
   }
 })
-
-// let mainWindow: BrowserWindow | null
-
-// const createMainWindow = () => {
-//   mainWindow = new BrowserWindow({
-//     width: 1440,
-//     height: 920,
-//     minWidth: 1440,
-//     minHeight: 920,
-//     show: false,
-//     backgroundColor: 'white',
-//     webPreferences: {
-//       nodeIntegration: false
-//     }
-//   })
-//   const startURL = 'http://localhost:3000'
-
-//   mainWindow.loadURL(startURL)
-
-//   mainWindow.once('ready-to-show', () => mainWindow?.show())
-
-//   mainWindow.on('closed', () => {})
-// }
-
-// app.whenReady().then(() => {
-//   createMainWindow()
-
-//   app.on('activate', () => {
-//     if (!BrowserWindow.getAllWindows().length) {
-//       createMainWindow()
-//     }
-//   })
-// })
-
-// app.on('window-all-closed', () => {
-//   if (process.platform !== 'darwin') {
-//     app.quit()
-//   }
-// })
