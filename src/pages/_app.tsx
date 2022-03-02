@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useState } from 'react'
 import type { AppProps } from 'next/app'
 
 import PlayerContextProvider from '../contexts/PlayerContext'
