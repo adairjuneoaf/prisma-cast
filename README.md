@@ -8,7 +8,7 @@
 
 ## 💻 Projeto - prisma.cast
 
-Você pode acessar o projeto clicando neste link [Acessar Projeto](prisma-cast.vercel.app)
+Você pode acessar o projeto clicando neste link [Acessar Projeto](https://prisma-cast.vercel.app)
 
 O prisma.cast é um app de Podcasts que pode ser utilizado em qualquer cenário, em que seja necessário ter um app próprio para distribuir ao seu público os seus Podcasts.
 Este é um projeto desenvolvido como parte da evolução de uma semana de estudos com a **[Rocketseat](https://www.rocketseat.com.br)**.
@@ -19,7 +19,6 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 - [React](https://reactjs.org)
 - [NextJS](https://nextjs.org)
-- [ELECTRON](https://www.electronjs.org)
 - [TypeScript](https://www.typescriptlang.org/)
 
 ## 📚 Bibliotecas
