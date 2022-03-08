@@ -6,6 +6,7 @@ import ptBR from 'date-fns/locale/pt-BR'
 
 import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined'
 import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined'
+import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined'
 
 import { Container } from '../styles/components/HeaderApp'
 import { Button, Tooltip } from '@mui/material'
@@ -42,6 +43,17 @@ const HeaderApp: React.FC<HeaderAppProps> = ({
 
       <div className="infoAboutUser">
         <div className="user">
+          <Tooltip title="Download do app para desktop" arrow>
+            <Button
+              className="downloadAppDesktop"
+              href="/prisma-cast-app.exe"
+              download
+            >
+              <FileDownloadOutlinedIcon
+                sx={{ color: '#E8C468', fontSize: 24 }}
+              />
+            </Button>
+          </Tooltip>
           <Tooltip title="Alterar tema do App" arrow>
             <Button
               type="button"

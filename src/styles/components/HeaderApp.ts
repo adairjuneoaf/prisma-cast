@@ -66,7 +66,13 @@ export const Container = styled.header`
     }
 
     .user {
-      .toggleThemeApp {
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+      gap: 0.5rem;
+
+      .toggleThemeApp,
+      .downloadAppDesktop {
         min-width: 0;
 
         font-size: 0;
